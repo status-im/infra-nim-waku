@@ -1,0 +1,10 @@
+.terraform/
+*.tfstate
+*.tfstate.d/
+*.tfstate.backup
+*.tfvars
+*.retry
+
+*.zip
+
+ansible/files/*
