@@ -57,19 +57,25 @@ consul-certs:
 	pass services/consul/client-crt > ansible/files/consul-client.crt
 	pass services/consul/client-key > ansible/files/consul-client.key
 
+google-auth:
+	@echo "Saving Google Cloud auth: google-cloud.json"
+	pass cloud/GoogleCloud/json > google-cloud.json
+
 tf-secrets:
 	@echo "Saving secrets to: terraform.tfvars"
 	@echo -e "\
 # secrets extracted from password-store\n\
-digitalocean_token      = \"$(shell pass cloud/DigitalOcean/token)\"\n\
-digitalocean_spaces_id  = \"$(shell pass cloud/DigitalOcean/spaces-id)\"\n\
-digitalocean_spaces_key = \"$(shell pass cloud/DigitalOcean/spaces-key)\"\n\
 cloudflare_token        = \"$(shell pass cloud/Cloudflare/token)\"\n\
 cloudflare_email        = \"$(shell pass cloud/Cloudflare/email)\"\n\
 cloudflare_account      = \"$(shell pass cloud/Cloudflare/account)\"\n\
+digitalocean_token      = \"$(shell pass cloud/DigitalOcean/token)\"\n\
+digitalocean_spaces_id  = \"$(shell pass cloud/DigitalOcean/spaces-id)\"\n\
+digitalocean_spaces_key = \"$(shell pass cloud/DigitalOcean/spaces-key)\"\n\
+alicloud_access_key     = \"$(shell pass cloud/Alibaba/access-key)\"\n\
+alicloud_secret_key     = \"$(shell pass cloud/Alibaba/secret-key)\"\n\
 " > terraform.tfvars
 
-secrets: consul-certs tf-secrets
+secrets: consul-certs google-auth tf-secrets
 
 cleanup:
 	rm -r $(PLUGIN_DIR)/$(ARCHIVE)

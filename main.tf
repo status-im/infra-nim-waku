@@ -11,6 +11,18 @@ provider "cloudflare" {
   account_id = var.cloudflare_account
 }
 
+provider "google" {
+  credentials = file("google-cloud.json")
+  project     = "russia-servers"
+  region      = "us-central1"
+}
+
+provider "alicloud" {
+  access_key = var.alicloud_access_key
+  secret_key = var.alicloud_secret_key
+  region     = "cn-hongkong"
+}
+
 /* DATA -----------------------------------------*/
 
 terraform {

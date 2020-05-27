@@ -8,3 +8,4 @@
 *.zip
 
 ansible/files/*
+/google-cloud.json
