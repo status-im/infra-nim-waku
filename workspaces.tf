@@ -11,8 +11,8 @@ locals {
     defaults = {
       hosts_count = 1 /* number of hosts in each DC */
 
-      do_size = "ecs.t5-lc1m1.small" /* DigitalOcean */
-      ac_size = "ecs.sn1ne.large"    /* Alibaba Cloud */
+      do_size = "s-1vcpu-1gb"        /* DigitalOcean */
+      ac_size = "ecs.t5-lc1m1.small" /* Alibaba Cloud */
       gc_size = "n1-standard-1"      /* Google Cloud */
     }
 
