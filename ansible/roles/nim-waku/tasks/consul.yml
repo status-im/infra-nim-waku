@@ -15,7 +15,7 @@
             tcp: 'localhost:{{ nim_waku_p2p_tcp_port }}'
 
       - id: '{{ nim_waku_cont_name }}-metrics'
-        name: 'nim-waku'
+        name: 'nim-waku-metrics'
         port: '{{ nim_waku_metrics_port }}'
         address: '{{ ansible_local.tinc.vpn_ip }}'
         tags: ['{{ env }}.{{ stage }}', 'beacon', 'nimbus', 'metrics']
