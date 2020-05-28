@@ -1,21 +1,27 @@
 ---
+- name: 'Create container dir: {{ nim_waku_cont_name }}'
+  file:
+    path: '{{ nim_waku_cont_vol }}'
+    state: directory
+    owner: dockremap
+    group: docker
+
 - name: Check if node key file exists
   stat:
     path: '{{ nim_waku_node_key_file_path }}'
   register: key_file
 
+- name: Save generate node key to file
+  copy:
+    dest: '{{ nim_waku_node_key_file_path | mandatory }}'
+    content: '{{ nim_waku_random_node_key | mandatory }}'
+    mode: 0400
+  when: not key_file.stat.exists
+
 - name: Read node key to from a file
   slurp:
     src: '{{ nim_waku_node_key_file_path }}'
   register: node_key_slurp
-  when: key_file.stat.exists
-
-- name: Save generate node key to file
-  file:
-    path: '{{ nim_waku_node_key_file_path | mandatory }}'
-    contents: '{{ nim_waku_random_node_key | mandatory }}'
-    mode: 0400
-  when: not key_file.stat.exists
 
 - name: Extract node key
   set_fact:

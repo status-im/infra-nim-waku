@@ -7,7 +7,7 @@ nim_waku_cont_vol: '/docker/{{ nim_waku_cont_name }}'
 # Value for private node key which is used to create public enode key
 nim_waku_node_key: ~
 # Node key needs to be a 64 char hexadecimal string, used if not provided
-nim_waku_random_node_key: '{{ random | hash("sha256") }}'
+nim_waku_random_node_key: '{{ ansible_date_time.epoch | random | hash("sha256") }}'
 nim_waku_node_key_file_path: '{{ nim_waku_cont_vol }}/nodekey'
 
 # WARNING: Enabling this will disable relaying of messages
