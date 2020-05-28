@@ -8,6 +8,9 @@
           container_name: '{{ nim_waku_cont_name }}'
           image: '{{ nim_waku_cont_image }}'
           restart: 'always'
+          labels:
+            # auto-updating of docker image
+            com.centurylinklabs.watchtower.enable: 'true'
           deploy:
             resources:
               limits:
