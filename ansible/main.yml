@@ -1,0 +1,6 @@
+---
+- name: Configure Nimbus master
+  hosts: waku
+  roles:
+    - { role: open-ports, tags: open-ports }
+    - { role: nim-waku,   tags: nim-waku }
