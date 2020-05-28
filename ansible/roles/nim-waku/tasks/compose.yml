@@ -25,6 +25,7 @@
             - '127.0.0.1:{{ nim_waku_rpc_tcp_port }}:{{ nim_waku_rpc_tcp_port }}/tcp'
             - '{{ nim_waku_p2p_tcp_port }}:{{ nim_waku_p2p_tcp_port }}/tcp'
             - '{{ nim_waku_p2p_udp_port }}:{{ nim_waku_p2p_udp_port }}/udp'
+            - '{{ nim_waku_metrics_port }}:{{ nim_waku_metrics_port }}/udp'
           command:
             - '--fleet={{ nim_waku_bootstrap_fleet }}'
             - '--nodekey={{ nim_waku_node_key | mandatory }}'
@@ -34,5 +35,5 @@
             - '--udp-port={{ nim_waku_p2p_udp_port }}'
             - '--discovery={{ nim_waku_discovery_enabled }}'
             - '--metrics-server={{ nim_waku_metrics_enabled }}'
-            - '--metrics-server-port={{ nim_waku_metrics_tcp_port }}'
+            - '--metrics-server-port={{ nim_waku_metrics_port }}'
             - '--metrics-server-address=0.0.0.0'

@@ -18,5 +18,5 @@
   when: not key_file.status.exists
 
 - name: Extract node key
-  set_facts:
+  set_fact:
     nim_waku_node_key: '{{ node_key_slurp.content | b64decode | trim }}'

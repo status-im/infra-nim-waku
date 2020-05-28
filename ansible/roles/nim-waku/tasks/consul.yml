@@ -1,0 +1,27 @@
+---
+- name: 'Consul service definition - {{ nim_waku_cont_name }}'
+  include_role: name=consul-service
+  vars:
+    consul_config_name: '{{ nim_waku_cont_name | replace("-", "_") }}'
+    consul_services:
+      - id: '{{ nim_waku_cont_name }}'
+        name: 'nim-waku'
+        port: '{{ nim_waku_listening_port }}'
+        address: '{{ nim_waku_p2p_tcp_port }}'
+        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku']
+        checks:
+          - name: 'nim-waku-health'
+            type: 'tcp'
+            tcp: 'localhost:{{ nim_waku_p2p_tcp_port }}'
+
+      - id: '{{ nim_waku_cont_name }}-metrics'
+        name: 'nim-waku'
+        port: '{{ nim_waku_metrics_port }}'
+        address: '{{ ansible_local.tinc.vpn_ip }}'
+        tags: ['{{ env }}.{{ stage }}', 'beacon', 'nimbus', 'metrics']
+        meta:
+          container: '{{ nim_waku_cont_name }}'
+        checks:
+          - name: 'beacon-node-metrics-health'
+            type: 'http'
+            http: 'http://localhost:{{ nim_waku_metrics_port }}/metrics'
