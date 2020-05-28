@@ -8,14 +8,14 @@
   slurp:
     src: '{{ nim_waku_node_key_file_path }}'
   register: node_key_slurp
-  when: key_file.status.exists
+  when: key_file.stat.exists
 
 - name: Save generate node key to file
   file:
     path: '{{ nim_waku_node_key_file_path | mandatory }}'
     contents: '{{ nim_waku_random_node_key | mandatory }}'
     mode: 0400
-  when: not key_file.status.exists
+  when: not key_file.stat.exists
 
 - name: Extract node key
   set_fact:
