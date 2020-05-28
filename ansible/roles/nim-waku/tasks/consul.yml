@@ -6,7 +6,7 @@
     consul_services:
       - id: '{{ nim_waku_cont_name }}'
         name: 'nim-waku'
-        port: '{{ nim_waku_listening_port }}'
+        port: '{{ nim_waku_p2p_tcp_port }}'
         address: '{{ nim_waku_p2p_tcp_port }}'
         tags: ['{{ env }}.{{ stage }}', 'nim', 'waku']
         checks:
