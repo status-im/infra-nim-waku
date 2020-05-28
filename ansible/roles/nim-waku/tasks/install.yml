@@ -1,0 +1,8 @@
+---
+- name: Install docker-compose package
+  apt:
+    name: docker-compose
+
+- name: Install Python docker-compose library
+  pip:
+    name: docker-compose

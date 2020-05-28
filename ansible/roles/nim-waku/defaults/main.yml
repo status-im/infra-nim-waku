@@ -1,0 +1,47 @@
+---
+nim_waku_cont_tag: latest
+nim_waku_cont_image: 'statusteam/nim-waku:{{ nim_waku_cont_tag }}'
+nim_waku_cont_name: 'nim-waku-node'
+nim_waku_cont_vol: '/docker/{{ nim_waku_cont_name }}'
+
+# Value for private node key which is used to create public enode key
+nim_waku_node_key: ~
+
+# WARNING: Enabling this will disable relaying of messages
+nim_waku_light_node_enabled: false
+
+# Available: error, warn, info, debug
+nim_waku_log_level: 'info'
+
+# The eth fleet running status-go node should bootstrap from
+nim_waku_bootstrap_fleet: 'test'
+
+# esperimental discovery support
+nim_waku_discovery_enabled: false
+
+nim_waku_public_address: '{{ ansible_host }}'
+nim_waku_rpc_tcp_port: 8545
+nim_waku_p2p_tcp_port: 30303
+nim_waku_p2p_udp_port: 30303
+
+# metrics are disabled by default
+nim_waku_metrics_enabled: true
+nim_waku_metrics_tcp_port: 8008
+
+# resource limits, mem in MB
+nim_waku_cpu_limit: 0.60
+nim_waku_mem_limit: '{{ (ansible_memtotal_mb * 0.6) | int }}'
+nim_waku_cpu_reserve: 0.20
+nim_waku_mem_reserve: '{{ (ansible_memtotal_mb * 0.2) | int }}'
+
+# container restart policy
+nim_waku_restart_ondition: 'on-failure'
+nim_waku_restart_max_attempts: 3
+nim_waku_restart_delay_sec: 10
+nim_waku_restart_window_sec: 120
+
+
+# general container management
+compose_recreate: false
+compose_restart: false
+compose_destroy: false
