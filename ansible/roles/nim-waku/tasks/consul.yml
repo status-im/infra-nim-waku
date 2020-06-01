@@ -18,7 +18,7 @@
         name: 'nim-waku-metrics'
         port: '{{ nim_waku_metrics_port }}'
         address: '{{ ansible_local.tinc.vpn_ip }}'
-        tags: ['{{ env }}.{{ stage }}', 'beacon', 'nimbus', 'metrics']
+        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'metrics']
         meta:
           container: '{{ nim_waku_cont_name }}'
         checks:
