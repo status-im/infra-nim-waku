@@ -25,3 +25,13 @@
           - name: 'beacon-node-metrics-health'
             type: 'http'
             http: 'http://localhost:{{ nim_waku_metrics_port }}/metrics'
+
+      - id: '{{ nim_waku_cont_name }}-rpc'
+        name: 'nim-waku-rpc'
+        port: '{{ nim_waku_rpc_tcp_port }}'
+        address: '{{ ansible_local.tinc.vpn_ip }}'
+        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'rpc']
+        checks:
+          - id: nim-waku-rpc-health
+            type: script
+            script: 'curl -s -X POST -H Content-type:application/json --data {"jsonrpc":"2.0","method":"admin_nodeInfo","params":[],"id":1} http://localhost:{{ nim_waku_rpc_tcp_port }}/'
