@@ -1,6 +1,12 @@
 ---
-- name: Configure Nimbus master
+- name: Configure Waku Nodes
   hosts: waku
+  roles:
+    - { role: open-ports, tags: open-ports }
+    - { role: nim-waku,   tags: nim-waku }
+
+- name: Configure Waku v2 Nodes
+  hosts: wakuv2
   roles:
     - { role: open-ports, tags: open-ports }
     - { role: nim-waku,   tags: nim-waku }
