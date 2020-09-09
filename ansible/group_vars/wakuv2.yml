@@ -7,6 +7,8 @@ nim_waku_p2p_udp_port: 60000
 
 # Open Nginx Ports
 open_ports_comment: 'Nim-Waku-V2'
+open_ports_action: 'insert'
+open_ports_chain: 'DOCKER-USER'
 open_ports_list:
   - { port: '{{ nim_waku_p2p_tcp_port }}', protocol: 'tcp' }
   - { port: '{{ nim_waku_p2p_udp_port }}', protocol: 'udp' }
