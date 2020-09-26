@@ -18,5 +18,9 @@ terraform {
       source = "hashicorp/google"
       version = " = 3.40.0"
     }
+    pass = {
+      source  = "camptocamp/pass"
+      version = " = 1.4.0"
+    }
   }
 }

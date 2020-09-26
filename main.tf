@@ -1,28 +1,3 @@
-/* DERIVED --------------------------------------*/
-provider "digitalocean" {
-  token             = var.digitalocean_token
-  spaces_access_id  = var.digitalocean_spaces_id
-  spaces_secret_key = var.digitalocean_spaces_key
-}
-
-provider "cloudflare" {
-  email      = var.cloudflare_email
-  api_key    = var.cloudflare_token
-  account_id = var.cloudflare_account
-}
-
-provider "google" {
-  credentials = file("google-cloud.json")
-  project     = "russia-servers"
-  region      = "us-central1"
-}
-
-provider "alicloud" {
-  access_key = var.alicloud_access_key
-  secret_key = var.alicloud_secret_key
-  region     = "cn-hongkong"
-}
-
 /* DATA -----------------------------------------*/
 
 terraform {
