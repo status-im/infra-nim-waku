@@ -34,6 +34,8 @@
             - '--nodekey={{ nim_waku_node_key | mandatory }}'
             - '--nat=extip:{{ nim_waku_public_address }}'
             - '--log-level={{ nim_waku_log_level }}'
+            - '--rpc-port={{ nim_waku_rpc_tcp_port }}'
+            - '--rpc-address=0.0.0.0'
             - '--tcp-port={{ nim_waku_p2p_tcp_port }}'
             - '--udp-port={{ nim_waku_p2p_udp_port }}'
             - '--discovery={{ nim_waku_discovery_enabled }}'
