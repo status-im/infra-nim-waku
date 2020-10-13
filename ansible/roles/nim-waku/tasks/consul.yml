@@ -34,4 +34,4 @@
         checks:
           - id: nim-waku-rpc-health
             type: script
-            script: 'curl -s -X POST -H Content-type:application/json --data {"jsonrpc":"2.0","method":"admin_nodeInfo","params":[],"id":1} http://localhost:{{ nim_waku_rpc_tcp_port }}/'
+            script: 'curl -s -X POST -H Content-type:application/json --data {"jsonrpc":"2.0","method":"waku_info","params":[],"id":1} http://localhost:{{ nim_waku_rpc_tcp_port }}/'
