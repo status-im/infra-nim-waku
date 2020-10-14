@@ -1,4 +1,14 @@
 ---
+- name: 'Extract address of the node for Consul'
+  uri:
+    url: 'http://localhost:{{ nim_waku_rpc_tcp_port }}/'
+    method: POST
+    body: '{"jsonrpc":"2.0","method":"waku_info","params":[],"id":1}'
+    status_code: 200
+    body_format: json
+  register: waku_info
+  ignore_errors: true
+
 - name: 'Consul service definition - {{ nim_waku_cont_name }}'
   include_role: name=consul-service
   vars:
@@ -9,6 +19,8 @@
         port: '{{ nim_waku_p2p_tcp_port }}'
         address: '{{ nim_waku_p2p_tcp_port }}'
         tags: ['{{ env }}.{{ stage }}', 'nim', 'waku']
+        meta:
+          node_enode: '{{ waku_info.json.result | default("unknown") }}'
         checks:
           - name: 'nim-waku-health'
             type: 'tcp'
