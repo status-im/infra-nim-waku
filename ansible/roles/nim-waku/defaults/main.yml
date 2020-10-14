@@ -1,7 +1,7 @@
 ---
 nim_waku_cont_tag: latest
 nim_waku_cont_image: 'statusteam/nim-waku:{{ nim_waku_cont_tag }}'
-nim_waku_cont_name: 'nim-waku-node'
+nim_waku_cont_name: 'nim-waku'
 nim_waku_cont_vol: '/docker/{{ nim_waku_cont_name }}'
 
 # Value for private node key which is used to create public enode key

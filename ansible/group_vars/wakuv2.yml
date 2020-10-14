@@ -1,6 +1,7 @@
 ---
 # Tag dependent on fleet: test, prod
 nim_waku_cont_tag: 'wakunode2'
+nim_waku_cont_name: 'nim-waku-v2'
 
 nim_waku_p2p_tcp_port: 60000
 nim_waku_p2p_udp_port: 60000

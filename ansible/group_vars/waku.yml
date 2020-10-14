@@ -1,6 +1,7 @@
 ---
 # Tag dependent on fleet: test, prod
 nim_waku_cont_tag: 'deploy-{{ stage }}'
+nim_waku_cont_name: 'nim-waku-v1'
 
 nim_waku_p2p_tcp_port: 30303
 nim_waku_p2p_udp_port: 30303

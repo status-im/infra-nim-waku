@@ -3,7 +3,10 @@
   uri:
     url: 'http://localhost:{{ nim_waku_rpc_tcp_port }}/'
     method: POST
-    body: '{"jsonrpc":"2.0","method":"waku_info","params":[],"id":1}'
+    body: 
+      method: 'waku_info'
+      params: []
+      id: 1
     status_code: 200
     body_format: json
   register: waku_info
@@ -15,19 +18,19 @@
     consul_config_name: '{{ nim_waku_cont_name | replace("-", "_") }}'
     consul_services:
       - id: '{{ nim_waku_cont_name }}'
-        name: 'nim-waku'
+        name: '{{ nim_waku_cont_name }}'
         port: '{{ nim_waku_p2p_tcp_port }}'
         address: '{{ nim_waku_p2p_tcp_port }}'
         tags: ['{{ env }}.{{ stage }}', 'nim', 'waku']
         meta:
           node_enode: '{{ waku_info.json.result | default("unknown") }}'
         checks:
-          - name: 'nim-waku-health'
+          - name: '{{ nim_waku_cont_name }}-health'
             type: 'tcp'
             tcp: 'localhost:{{ nim_waku_p2p_tcp_port }}'
 
       - id: '{{ nim_waku_cont_name }}-metrics'
-        name: 'nim-waku-metrics'
+        name: '{{ nim_waku_cont_name }}-metrics'
         port: '{{ nim_waku_metrics_port }}'
         address: '{{ ansible_local.tinc.vpn_ip }}'
         tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'metrics']
@@ -39,11 +42,11 @@
             http: 'http://localhost:{{ nim_waku_metrics_port }}/metrics'
 
       - id: '{{ nim_waku_cont_name }}-rpc'
-        name: 'nim-waku-rpc'
+        name: '{{ nim_waku_cont_name }}-rpc'
         port: '{{ nim_waku_rpc_tcp_port }}'
         address: '{{ ansible_local.tinc.vpn_ip }}'
         tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'rpc']
         checks:
-          - id: nim-waku-rpc-health
+          - id: '{{ nim_waku_cont_name }}-rpc-health'
             type: script
             script: 'curl -s -X POST -H Content-type:application/json --data {"jsonrpc":"2.0","method":"waku_info","params":[],"id":1} http://localhost:{{ nim_waku_rpc_tcp_port }}/'
