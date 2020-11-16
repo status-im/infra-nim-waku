@@ -14,10 +14,10 @@
           deploy:
             resources:
               limits:
-                cpus: '{{ nim_waku_cpu_limit | string }}'
+                cpus: '{{ nim_waku_cpu_limit | float }}'
                 memory: '{{ nim_waku_mem_limit }}M'
               reservations:
-                cpus: '{{ nim_waku_cpu_reserve | string }}'
+                cpus: '{{ nim_waku_cpu_reserve | float }}'
                 memory: '{{ nim_waku_mem_reserve }}M'
             restart_policy:
               condition: '{{ nim_waku_restart_ondition }}'
@@ -31,7 +31,7 @@
             - '{{ nim_waku_p2p_tcp_port }}:{{ nim_waku_p2p_tcp_port }}/tcp'
             - '{{ nim_waku_p2p_udp_port }}:{{ nim_waku_p2p_udp_port }}/udp'
             - '{{ nim_waku_metrics_port }}:{{ nim_waku_metrics_port }}/tcp'
-          command: |
+          command: >-
             {% if nim_waku_cont_tag == "wakunode2" %}
             --store=true
             --relay=true
