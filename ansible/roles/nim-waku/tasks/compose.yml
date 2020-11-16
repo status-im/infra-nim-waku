@@ -24,24 +24,29 @@
               max_attempts: '{{ nim_waku_restart_max_attempts }}'
               delay: '{{ nim_waku_restart_delay_sec }}s'
               window: '{{ nim_waku_restart_window_sec }}s'
-         volumes:
+          volumes:
             - '{{ nim_waku_node_db_path }}:/data'
           ports:
             - '127.0.0.1:{{ nim_waku_rpc_tcp_port }}:{{ nim_waku_rpc_tcp_port }}/tcp'
             - '{{ nim_waku_p2p_tcp_port }}:{{ nim_waku_p2p_tcp_port }}/tcp'
             - '{{ nim_waku_p2p_udp_port }}:{{ nim_waku_p2p_udp_port }}/udp'
             - '{{ nim_waku_metrics_port }}:{{ nim_waku_metrics_port }}/tcp'
-          command:
-            - '--fleet={{ nim_waku_bootstrap_fleet }}'
-            - '--nodekey={{ nim_waku_node_key | mandatory }}'
-            - '--nat=extip:{{ nim_waku_public_address }}'
-            - '--log-level={{ nim_waku_log_level }}'
-            - '--rpc-port={{ nim_waku_rpc_tcp_port }}'
-            - '--rpc-address=0.0.0.0'
-            - '--tcp-port={{ nim_waku_p2p_tcp_port }}'
-            - '--udp-port={{ nim_waku_p2p_udp_port }}'
-            - '--discovery={{ nim_waku_discovery_enabled }}'
-            - '--metrics-server={{ nim_waku_metrics_enabled }}'
-            - '--metrics-server-port={{ nim_waku_metrics_port }}'
-            - '--metrics-server-address=0.0.0.0'
-            - '--dbpath:/data'
+          command: |
+            {% if nim_waku_cont_tag == "wakunode2" %}
+            --store=true
+            --relay=true
+            --filter=true
+            --dbpath=/data
+            {% else %}
+            --discovery={{ nim_waku_discovery_enabled }}
+            {% endif %}
+            --nodekey={{ nim_waku_node_key | mandatory }}
+            --nat=extip:{{ nim_waku_public_address }}
+            --log-level={{ nim_waku_log_level }}
+            --rpc-port={{ nim_waku_rpc_tcp_port }}
+            --rpc-address=0.0.0.0
+            --tcp-port={{ nim_waku_p2p_tcp_port }}
+            --udp-port={{ nim_waku_p2p_udp_port }}
+            --metrics-server={{ nim_waku_metrics_enabled }}
+            --metrics-server-port={{ nim_waku_metrics_port }}
+            --metrics-server-address=0.0.0.0

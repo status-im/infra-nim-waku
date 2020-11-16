@@ -1,4 +1,12 @@
 ---
+- name: 'Create data folder'
+  file:
+    dest: '{{ nim_waku_node_db_path }}'
+    state: 'directory'
+    owner: dockremap
+    group: docker
+    mode: 0775
+
 - name: 'Create compose file: {{ nim_waku_cont_name }}'
   copy:
     dest: '{{ nim_waku_cont_vol }}/docker-compose.yml'
