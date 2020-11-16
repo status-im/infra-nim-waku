@@ -10,6 +10,9 @@ nim_waku_node_key: ~
 nim_waku_random_node_key: '{{ ansible_date_time.epoch | random | hash("sha256") }}'
 nim_waku_node_key_file_path: '{{ nim_waku_cont_vol }}/nodekey'
 
+# Node database path
+nim_waku_node_db_path: '{{ nim_waku_cont_vol }}/data'
+
 # WARNING: Enabling this will disable relaying of messages
 nim_waku_light_node_enabled: false
 

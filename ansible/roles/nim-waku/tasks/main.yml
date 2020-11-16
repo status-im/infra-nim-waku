@@ -1,6 +1,7 @@
 ---
 - import_tasks: install.yml
 - import_tasks: nodekey.yml
+- import_tasks: db.yml
 - import_tasks: compose.yml
 - import_tasks: container.yml
 - import_tasks: consul.yml
