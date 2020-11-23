@@ -2,8 +2,8 @@ module "nim_waku" {
   source = "github.com/status-im/infra-tf-multi-provider"
 
   /* node type */
-  env    = "waku"
-  group  = "waku"
+  env    = "wakuv1"
+  group  = "wakuv1"
   domain = var.domain
 
   /* scaling */

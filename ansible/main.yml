@@ -1,6 +1,6 @@
 ---
 - name: Configure Waku Nodes
-  hosts: waku
+  hosts: wakuv1
   roles:
     - { role: open-ports, tags: open-ports }
     - { role: nim-waku,   tags: nim-waku }
