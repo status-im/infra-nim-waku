@@ -1,4 +1,4 @@
-module "nim_waku" {
+module "nim_wakuv1" {
   source = "github.com/status-im/infra-tf-multi-provider"
 
   /* node type */
