@@ -17,13 +17,10 @@
                 cpus: '{{ nim_waku_cpu_limit | float }}'
                 memory: '{{ nim_waku_mem_limit }}M'
               reservations:
-                cpus: '{{ nim_waku_cpu_reserve | float }}'
                 memory: '{{ nim_waku_mem_reserve }}M'
             restart_policy:
               condition: '{{ nim_waku_restart_ondition }}'
               max_attempts: '{{ nim_waku_restart_max_attempts }}'
-              delay: '{{ nim_waku_restart_delay_sec }}s'
-              window: '{{ nim_waku_restart_window_sec }}s'
           volumes:
             - '{{ nim_waku_node_db_path }}:/data'
           ports:
