@@ -3,8 +3,8 @@ module "nim_hosts" {
 
   /* node type */
   env    = local.ws.env
-  group  = local.ws.env
   stage  = local.ws.stage
+  group  = "${local.ws.env}-${local.ws.stage}"
   domain = var.domain
 
   /* scaling */
