@@ -14,9 +14,3 @@ terraform {
     key_file  = "ansible/files/consul-client.key"
   }
 }
-
-/* WORKSPACES -----------------------------------*/
-
-locals {
-  ws = merge(local.env["defaults"], local.env[terraform.workspace])
-}

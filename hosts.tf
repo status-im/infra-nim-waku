@@ -1,9 +1,10 @@
-module "nim_wakuv2" {
+module "nim_hosts" {
   source = "github.com/status-im/infra-tf-multi-provider"
 
   /* node type */
-  env    = "wakuv2"
-  group  = "wakuv2"
+  env    = local.ws.env
+  group  = local.ws.env
+  stage  = local.ws.stage
   domain = var.domain
 
   /* scaling */

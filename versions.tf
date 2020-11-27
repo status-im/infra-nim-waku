@@ -11,11 +11,11 @@ terraform {
       version = " = 1.22.2"
     }
     alicloud = {
-      source = "aliyun/alicloud"
+      source  = "aliyun/alicloud"
       version = " = 1.95.0"
     }
     google = {
-      source = "hashicorp/google"
+      source  = "hashicorp/google"
       version = " = 3.42.0"
     }
     pass = {
