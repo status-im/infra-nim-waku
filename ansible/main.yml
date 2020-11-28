@@ -3,6 +3,7 @@
   hosts:
     - wakuv1-test
     - wakuv2-test
+    - wakuv2-prod
   roles:
     - { role: open-ports, tags: open-ports }
     - { role: nim-waku,   tags: nim-waku }

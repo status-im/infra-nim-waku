@@ -16,5 +16,8 @@ module "nim_hosts" {
   gc_size = local.ws["gc_size"] /* Google Cloud */
 
   /* firewall */
-  open_tcp_ports = [ "443" /* p2p */ ]
+  open_tcp_ports = [
+    "443",   /* p2p alt */
+    "30303", /* p2p main */
+  ]
 }
