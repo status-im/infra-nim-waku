@@ -16,7 +16,7 @@ locals {
 
       do_size = "s-1vcpu-1gb"        /* DigitalOcean */
       ac_size = "ecs.t5-lc1m1.small" /* Alibaba Cloud */
-      gc_size = "n1-standard-1"      /* Google Cloud */
+      gc_size = "g1-small"           /* Google Cloud */
     }
 
     # Inherits defaults.
