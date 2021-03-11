@@ -8,37 +8,18 @@
     mode: 0775
 
 - name: 'Create compose file: {{ nim_waku_cont_name }}'
-  copy:
+  template:
+    src: 'docker-compose.yml.j2'
     dest: '{{ nim_waku_cont_vol }}/docker-compose.yml'
-    content: '{{ nim_waku_compose | to_nice_yaml }}'
     owner: dockremap
     group: docker
     mode: 0644
 
 # --compatibility flag required for mem/cpu limits
 - name: 'Create container: {{ nim_waku_cont_name }}'
-  command: |
-    docker-compose \
-      --compatibility \
-      up \
-      --quiet-pull \
-      --no-build \
-      --detach \
-      {% if compose_recreate %}
-      --force-recreate \
-      {% endif %}
-      --no-color
-  args:
-    chdir: '{{ nim_waku_cont_vol }}'
-
-- name: 'Restart container: {{ nim_waku_cont_name }}'
-  command: docker-compose --compatibility down
-  args:
-    chdir: '{{ nim_waku_cont_vol }}'
-  when: compose_restart
-
-- name: 'Destroy container: {{ nim_waku_cont_name }}'
-  command: docker-compose --compatibility down
-  args:
-    chdir: '{{ nim_waku_cont_vol }}'
-  when: compose_destroy
+  docker_compose:
+    project_src: '{{ nim_waku_cont_vol }}'
+    pull: true
+    state: '{{ compose_state }}'
+    restarted: '{{ compose_restart }}'
+    recreate: '{{ compose_recreate }}'

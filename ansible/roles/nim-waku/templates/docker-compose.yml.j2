@@ -1,0 +1,47 @@
+---
+version: '3.7'
+services:
+  nim_waku_node:
+    container_name: '{{ nim_waku_cont_name }}'
+    image: '{{ nim_waku_cont_image }}'
+    restart: 'always'
+    labels:
+      # auto-updating of docker image
+      com.centurylinklabs.watchtower.enable: 'true'
+    deploy:
+      resources:
+        limits:
+          cpus: '{{ nim_waku_cpu_limit | float }}'
+          memory: '{{ nim_waku_mem_limit }}M'
+        reservations:
+          memory: '{{ nim_waku_mem_reserve }}M'
+      restart_policy:
+        condition: '{{ nim_waku_restart_ondition }}'
+        max_attempts: '{{ nim_waku_restart_max_attempts }}'
+    volumes:
+      - '{{ nim_waku_node_db_path }}:/data'
+    ports:
+      - '127.0.0.1:{{ nim_waku_rpc_tcp_port }}:{{ nim_waku_rpc_tcp_port }}/tcp'
+      - '{{ nim_waku_p2p_tcp_port }}:{{ nim_waku_p2p_tcp_port }}/tcp'
+      - '{{ nim_waku_p2p_udp_port }}:{{ nim_waku_p2p_udp_port }}/udp'
+      - '{{ nim_waku_metrics_port }}:{{ nim_waku_metrics_port }}/tcp'
+    command: |
+{% if "v2" in nim_waku_cont_tag %}
+      --store=true
+      --relay=true
+      --filter=true
+      --dbpath=/data
+      --rpc-admin=true
+{% else %}
+      --discovery={{ nim_waku_discovery_enabled }}
+{% endif %}
+      --nodekey={{ nim_waku_node_key | mandatory }}
+      --nat=extip:{{ nim_waku_public_address }}
+      --log-level={{ nim_waku_log_level }}
+      --rpc-port={{ nim_waku_rpc_tcp_port }}
+      --rpc-address=0.0.0.0
+      --tcp-port={{ nim_waku_p2p_tcp_port }}
+      --udp-port={{ nim_waku_p2p_udp_port }}
+      --metrics-server={{ nim_waku_metrics_enabled }}
+      --metrics-server-port={{ nim_waku_metrics_port }}
+      --metrics-server-address=0.0.0.0
