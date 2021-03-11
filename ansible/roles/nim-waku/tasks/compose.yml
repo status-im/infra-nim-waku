@@ -34,6 +34,7 @@
             --relay=true
             --filter=true
             --dbpath=/data
+            --rpc-admin=true
             {% else %}
             --discovery={{ nim_waku_discovery_enabled }}
             {% endif %}
