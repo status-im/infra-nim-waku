@@ -1,0 +1,38 @@
+---
+- name: Get data centers
+  uri:
+    url: '{{ consul_url }}/datacenters'
+  register: data_centers
+
+- name: Discover other fleet peers
+  uri:
+    url: '{{ consul_url }}/service/{{ nim_waku_cont_name }}?dc={{ item }}&tag={{ env }}.{{ stage }}'
+  with_items: '{{ data_centers.json }}'
+  register: nim_waku_services
+
+- name: Combine data centers into one list
+  set_fact:
+    nim_waku_peers: '{{ nim_waku_services.results | sum(attribute="json", start=[]) }}'
+
+- name: Extract fleet stages from services
+  set_fact:
+    nim_waku_peers_enodes: '{{ nim_waku_peers | map(attribute="ServiceMeta.node_enode") | list }}'
+
+- name: Call RPC to connect to fleet peers
+  uri:
+    url: 'http://localhost:{{ nim_waku_rpc_tcp_port }}/'
+    method: 'POST'
+    body_format: 'json'
+    return_content: true
+    body: 
+      method: 'post_waku_v2_admin_v1_peers'
+      params: '{{ [ nim_waku_peers_enodes ] }}'
+      id: 1
+  register: nim_waku_rcp_resp
+
+- name: Verify RPC call was succesful
+  assert:
+    that:
+      - nim_waku_rcp_resp.json.error == None
+    fail_msg: 'Failed to add peers: {{ nim_waku_rcp_resp.json.error | to_nice_json }}'
+    quiet: true

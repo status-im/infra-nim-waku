@@ -46,8 +46,10 @@ nim_waku_restart_max_attempts: 3
 nim_waku_restart_delay_sec: 10
 nim_waku_restart_window_sec: 120
 
+# For querying for fleet peers
+consul_url: 'http://localhost:8500/v1/catalog'
 
 # general container management
-compose_recreate: false
+compose_recreate: 'smart'
+compose_state: 'present'
 compose_restart: false
-compose_destroy: false
