@@ -7,6 +7,14 @@
     group: docker
     mode: 0775
 
+- name: Create script for calling RPC endpoint
+  template:
+    src: 'rpc.sh.j2'
+    dest: '{{ nim_waku_cont_vol }}/rpc.sh'
+    owner: dockremap
+    group: docker
+    mode: 0755
+
 - name: 'Create compose file: {{ nim_waku_cont_name }}'
   template:
     src: 'docker-compose.yml.j2'
