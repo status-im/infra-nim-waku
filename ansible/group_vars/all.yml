@@ -1,11 +1,10 @@
 ---
+# Root password
+bootstrap__root_pass: '{{lookup("passwordstore", "hosts/admin-pass")}}'
+# Consul encryption key
+bootstrap__consul_encryption_key: '{{lookup("passwordstore", "services/consul/encryption-key")}}'
+
 # general container config
 cont_state: started
 cont_recreate: false
 cont_restart: false
-
-# Root password
-bootstrap__root_pass: '{{lookup("passwordstore", "hosts/admin-pass")}}'
-
-# Consul Encryption
-consul_encryption_key: '{{lookup("passwordstore", "services/consul/encryption-key")}}'
