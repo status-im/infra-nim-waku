@@ -27,12 +27,12 @@
     body: 
       method: 'post_waku_v2_admin_v1_peers'
       params: '{{ [ nim_waku_peers_enodes ] }}'
+      jsonrpc: '2.0'
       id: 1
   register: nim_waku_rcp_resp
 
 - name: Verify RPC call was succesful
   assert:
-    that:
-      - nim_waku_rcp_resp.json.error == None
-    fail_msg: 'Failed to add peers: {{ nim_waku_rcp_resp.json.error | to_nice_json }}'
+    that: 'nim_waku_rcp_resp.json.error is not defined'
+    fail_msg: 'Failed to add peers: {{ nim_waku_rcp_resp.json | to_nice_json }}'
     quiet: true
