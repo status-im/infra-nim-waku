@@ -48,5 +48,5 @@
         tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'rpc']
         checks:
           - id: '{{ nim_waku_cont_name }}-rpc-health'
-            type: script
-            script: 'curl -s -X POST -H Content-type:application/json --data {"jsonrpc":"2.0","method":"get_waku_v2_debug_v1_info","params":[],"id":1} http://localhost:{{ nim_waku_rpc_tcp_port }}/'
+            type: 'script'
+            script: '{{ nim_waku_cont_vol }}/rpc.sh get_waku_v2_debug_v1_info'

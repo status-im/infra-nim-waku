@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# vim: set ft=sh:
 
 URL="http://localhost:{{ nim_waku_rpc_tcp_port }}/"
 
@@ -12,21 +13,23 @@ if [[ -z "${METHOD}" ]]; then
 fi
 if [[ -n "${PARAMS}" ]]; then
     PARAMS_STR=$(printf '%s\",\"' "${PARAMS[@]}")
-    PARAMS_STR="\"${PARAMS_STR%%\",\"}\""
+    # Params are a nested array because of a bug in nim-json-rpc.
+    # https://github.com/status-im/nim-json-rpc/issues/90
+    PARAMS_STR="[\"${PARAMS_STR%%\",\"}\"]"
 else
     PARAMS_STR=''
 fi
 
-# Params are a nested array because of a bug in nim-json-rpc.
-# https://github.com/status-im/nim-json-rpc/issues/90
 PAYLOAD="{
   \"id\": 1,
   \"jsonrpc\": \"2.0\",
   \"method\": \"${METHOD}\",
-  \"params\": [[${PARAMS_STR}]]
+  \"params\": [${PARAMS_STR}]
 }"
 
-curl -s -X POST \
+# The jq script checks if error exists and adjusts exit code.
+curl -f -s -X POST \
     -H "Content-type:application/json" \
     --data "${PAYLOAD}" \
-    "${URL}" | jq .
+    "${URL}" | \
+    jq -e '., if .error != null then null|halt_error(2) else halt end'
