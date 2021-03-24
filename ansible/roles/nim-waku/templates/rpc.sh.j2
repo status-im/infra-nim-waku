@@ -17,11 +17,13 @@ else
     PARAMS_STR=''
 fi
 
+# Params are a nested array because of a bug in nim-json-rpc.
+# https://github.com/status-im/nim-json-rpc/issues/90
 PAYLOAD="{
   \"id\": 1,
   \"jsonrpc\": \"2.0\",
   \"method\": \"${METHOD}\",
-  \"params\": [${PARAMS_STR}]
+  \"params\": [[${PARAMS_STR}]]
 }"
 
 curl -s -X POST \
