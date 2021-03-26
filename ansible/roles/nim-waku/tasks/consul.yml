@@ -6,11 +6,18 @@
     body: 
       method: 'get_waku_v2_debug_v1_info'
       params: []
+      jsonrpc: '2.0'
       id: 1
     status_code: 200
     body_format: json
   register: waku_info
   ignore_errors: true
+
+- name: Verify we got the node address
+  assert:
+    that: 'waku_info.json.result.listenStr is defined'
+    fail_msg: 'Did not receive Nim-Waku node address!'
+    quiet: true
 
 - name: 'Consul service definition - {{ nim_waku_cont_name }}'
   include_role: name=consul-service
