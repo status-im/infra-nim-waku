@@ -21,3 +21,6 @@ provider "alicloud" {
   secret_key = data.pass_password.alicloud_secret_key.password
   region     = "cn-hongkong"
 }
+
+# Uses PASSWORD_STORE_DIR environment variable
+provider "pass" {}
