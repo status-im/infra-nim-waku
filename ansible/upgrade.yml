@@ -1,6 +1,7 @@
 - name: Update and upgrade apt packages
   gather_facts: false
   hosts: all
+  serial: 1
   tasks:
     - name: Upgrade packages
       apt:
@@ -10,3 +11,6 @@
     - name: Remove unused packages
       apt:
         autoremove: true
+      register: packages
+    - reboot:
+      when: packages.changed
