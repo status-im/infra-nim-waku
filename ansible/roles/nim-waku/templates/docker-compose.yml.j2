@@ -32,6 +32,7 @@ services:
       --filter=true
       --dbpath=/data
       --rpc-admin=true
+      --peerpersist=true
 {% else %}
       --discovery={{ nim_waku_discovery_enabled }}
 {% endif %}
