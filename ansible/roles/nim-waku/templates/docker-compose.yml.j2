@@ -33,6 +33,7 @@ services:
       --dbpath=/data
       --rpc-admin=true
       --peerpersist=true
+      --keep-alive=true
 {% else %}
       --discovery={{ nim_waku_discovery_enabled }}
 {% endif %}
