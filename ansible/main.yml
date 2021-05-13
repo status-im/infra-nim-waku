@@ -16,4 +16,5 @@
     - wakuv2-prod
   roles:
     - { role: open-ports, tags: open-ports }
+    - { role: certbot,    tags: certbot }
     - { role: nim-waku,   tags: nim-waku }

@@ -64,6 +64,10 @@ services:
       restart_policy:
         condition: '{{ nim_waku_restart_condition }}'
         max_attempts: '{{ nim_waku_restart_max_attempts }}'
+{% if nim_waku_websockify_ssl_cert %}
+    volumes:
+      - '{{ nim_waku_websockify_ssl_dir }}:{{ nim_waku_websockify_ssl_dir | mandatory }}'
+{% endif %}
     ports:
       - '{{ nim_waku_websockify_cont_port }}:{{ nim_waku_websockify_cont_port }}/tcp'
     depends_on:
@@ -71,6 +75,10 @@ services:
     command: |
 {% if nim_waku_websockify_verbose %}
       --verbose
+{% endif %}
+{% if nim_waku_websockify_ssl_cert and nim_waku_websockify_ssl_key %}
+      --cert={{ nim_waku_websockify_ssl_cert }}
+      --key={{ nim_waku_websockify_ssl_key }}
 {% endif %}
       {{ nim_waku_websockify_cont_port }}
       node:{{ nim_waku_p2p_tcp_port }}

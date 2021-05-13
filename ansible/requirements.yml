@@ -18,3 +18,8 @@
   src: git@github.com:status-im/infra-role-consul-service.git
   version: b1d5ad5caa7d7a036fd175292fa497175bb7c54c
   scm: git
+
+- name: certbot
+  src: git@github.com:status-im/ansible-role-certbot.git
+  version: 9eb5685b986a66791c0f06b6dd9c0d1735d54098
+  scm: git

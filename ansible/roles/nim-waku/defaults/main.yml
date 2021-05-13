@@ -53,6 +53,10 @@ nim_waku_websockify_cont_name: 'websockify'
 nim_waku_websockify_cont_tag: 'v0.9.0'
 nim_waku_websockify_cont_image: 'statusteam/websockify:{{ nim_waku_websockify_cont_tag }}'
 nim_waku_websockify_cont_port: 8080
+#nim_waku_websockify_domain: 'hostname.example.org'
+#nim_waku_websockify_ssl_dir: ~
+#nim_waku_websockify_ssl_cert: ~
+#nim_waku_websockify_ssl_key: ~
 
 # For querying for fleet peers
 consul_url: 'http://localhost:8500/v1/catalog'

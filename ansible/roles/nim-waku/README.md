@@ -12,6 +12,16 @@ nim_waku_node_key:
 nim_waku_bootstrap_fleet: 'test'
 nim_waku_log_level: 'info'
 ```
+You can also enable WebSockets via [WebSockify](https://github.com/novnc/websockify):
+```yaml
+nim_waku_websockify_enabled: true
+nim_waku_websockify_cont_port: 443
+nim_waku_websockify_domain: 'hostname.example.org'
+nim_waku_websockify_ssl_dir: '/etc/letsencrypt'
+nim_waku_websockify_ssl_cert: '/etc/letsencrypt/live/{{ nim_waku_websockify_domain }}/fullchain.pem'
+nim_waku_websockify_ssl_key: '/etc/letsencrypt/live/{{ nim_waku_websockify_domain }}/privkey.pem'
+```
+In this case [LetsEncrypt](https://letsencrypt.org/) is used, but any other certificate would work as long ass the full chain is given to WebSockify.
 
 # Usage
 
