@@ -19,10 +19,12 @@
     fail_msg: 'Did not receive Nim-Waku node address!'
     quiet: true
 
-- name: 'Consul service definition - {{ nim_waku_cont_name }}'
-  include_role: name=consul-service
-  vars:
-    consul_config_name: '{{ nim_waku_cont_name | replace("-", "_") }}'
+- name: Extract peer ID from RPC response
+  set_fact:
+    nim_waku_peer_id: '{{ waku_info.json.result.listenStr.split("/") | last }}'
+
+- name: Define Consul services
+  set_fact:
     consul_services:
       - id: '{{ nim_waku_cont_name }}'
         name: '{{ nim_waku_cont_name }}'
@@ -57,3 +59,24 @@
           - id: '{{ nim_waku_cont_name }}-rpc-health'
             type: 'script'
             script: '{{ nim_waku_cont_vol }}/rpc.sh get_waku_v2_debug_v1_info'
+
+      - id: '{{ nim_waku_cont_name }}-websocket'
+        name: '{{ nim_waku_cont_name }}-websocket'
+        port: '{{ nim_waku_websockify_cont_port }}'
+        address: '{{ nim_waku_p2p_tcp_port }}'
+        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'websocket']
+        checks:
+          - name: '{{ nim_waku_cont_name }}-websocket-health'
+            type: 'tcp'
+            tcp: 'localhost:{{ nim_waku_websockify_cont_port }}'
+
+- name: Remove Websockify Consul service
+  set_fact:
+    consul_services: |
+      {{ consul_services | rejectattr('name', 'match', '.*-websocket$') | list }}
+  when: not nim_waku_websockify_enabled
+
+- name: 'Consul service definition - {{ nim_waku_cont_name }}'
+  include_role: name=consul-service
+  vars:
+    consul_config_name: '{{ nim_waku_cont_name | replace("-", "_") }}'

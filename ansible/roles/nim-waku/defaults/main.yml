@@ -1,5 +1,5 @@
 ---
-nim_waku_cont_tag: latest
+im_waku_cont_tag: latest
 nim_waku_cont_image: 'statusteam/nim-waku:{{ nim_waku_cont_tag }}'
 nim_waku_cont_name: 'nim-waku'
 nim_waku_cont_vol: '/docker/{{ nim_waku_cont_name }}'
@@ -41,10 +41,18 @@ nim_waku_cpu_reserve: 0.20
 nim_waku_mem_reserve: '{{ (ansible_memtotal_mb * 0.2) | int }}'
 
 # container restart policy
-nim_waku_restart_ondition: 'on-failure'
+nim_waku_restart_condition: 'on-failure'
 nim_waku_restart_max_attempts: 3
 nim_waku_restart_delay_sec: 10
 nim_waku_restart_window_sec: 120
+
+# WebSockets via Websockify
+nim_waku_websockify_enabled: false
+nim_waku_websockify_verbose: false
+nim_waku_websockify_cont_name: 'websockify'
+nim_waku_websockify_cont_tag: 'v0.9.0'
+nim_waku_websockify_cont_image: 'statusteam/websockify:{{ nim_waku_websockify_cont_tag }}'
+nim_waku_websockify_cont_port: 8080
 
 # For querying for fleet peers
 consul_url: 'http://localhost:8500/v1/catalog'

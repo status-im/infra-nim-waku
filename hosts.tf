@@ -17,7 +17,7 @@ module "nim_hosts" {
 
   /* firewall */
   open_tcp_ports = [
-    "443",   /* p2p alt */
+    "443",   /* p2p websocket */
     "30303", /* p2p main */
   ]
 }

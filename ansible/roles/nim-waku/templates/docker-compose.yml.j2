@@ -1,7 +1,7 @@
 ---
 version: '3.7'
 services:
-  nim_waku_node:
+  node:
     container_name: '{{ nim_waku_cont_name }}'
     image: '{{ nim_waku_cont_image }}'
     restart: 'always'
@@ -16,7 +16,7 @@ services:
         reservations:
           memory: '{{ nim_waku_mem_reserve }}M'
       restart_policy:
-        condition: '{{ nim_waku_restart_ondition }}'
+        condition: '{{ nim_waku_restart_condition }}'
         max_attempts: '{{ nim_waku_restart_max_attempts }}'
     volumes:
       - '{{ nim_waku_node_db_path }}:/data'
@@ -25,6 +25,12 @@ services:
       - '{{ nim_waku_p2p_tcp_port }}:{{ nim_waku_p2p_tcp_port }}/tcp'
       - '{{ nim_waku_p2p_udp_port }}:{{ nim_waku_p2p_udp_port }}/udp'
       - '{{ nim_waku_metrics_port }}:{{ nim_waku_metrics_port }}/tcp'
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "--header", "Content-type:application/json",
+        "--post-data", "{\"id\":1,\"jsonrpc\":\"2.0\",\"method\": \"get_waku_v2_debug_v1_info\",\"params\":[]}",
+        "http://127.0.0.1:{{ nim_waku_rpc_tcp_port }}"]
+      interval: 10s
+      retries: 3
     command: |
 {% if "v2" in nim_waku_cont_tag %}
       --store=true
@@ -48,3 +54,24 @@ services:
       --metrics-server={{ nim_waku_metrics_enabled }}
       --metrics-server-port={{ nim_waku_metrics_port }}
       --metrics-server-address=0.0.0.0
+{% if nim_waku_websockify_enabled %}
+
+  websockify:
+    container_name: '{{ nim_waku_websockify_cont_name }}'
+    image: '{{ nim_waku_websockify_cont_image }}'
+    restart: 'always'
+    deploy:
+      restart_policy:
+        condition: '{{ nim_waku_restart_condition }}'
+        max_attempts: '{{ nim_waku_restart_max_attempts }}'
+    ports:
+      - '{{ nim_waku_websockify_cont_port }}:{{ nim_waku_websockify_cont_port }}/tcp'
+    depends_on:
+      - node
+    command: |
+{% if nim_waku_websockify_verbose %}
+      --verbose
+{% endif %}
+      {{ nim_waku_websockify_cont_port }}
+      node:{{ nim_waku_p2p_tcp_port }}
+{% endif %}
