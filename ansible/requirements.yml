@@ -11,7 +11,7 @@
 
 - name: infra-role-bootstrap
   src: git@github.com:status-im/infra-role-bootstrap.git
-  version: 244ed6a740d6c20250024de9ae1a0232d71b1f57
+  version: 784e5df3d5a5c7ffb06d6973468c9bcdf6a4d97b
   scm: git
 
 - name: consul-service
