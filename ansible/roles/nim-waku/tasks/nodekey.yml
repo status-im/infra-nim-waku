@@ -11,6 +11,13 @@
     path: '{{ nim_waku_node_key_file_path }}'
   register: key_file
 
+- name: Generate random node key
+  throttle: 1
+  set_fact:
+    # Node key needs to be a 64 char hexadecimal string
+    nim_waku_random_node_key: '{{ ansible_date_time.epoch | random | hash("sha256") }}'
+  when: not key_file.stat.exists
+
 - name: Save generate node key to file
   copy:
     dest: '{{ nim_waku_node_key_file_path | mandatory }}'
