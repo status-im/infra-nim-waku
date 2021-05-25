@@ -29,3 +29,19 @@ open_ports_list:
   - { port: '{{ nim_waku_p2p_udp_port }}',         protocol: 'udp' }
   - { port: '{{ nim_waku_websockify_cont_port }}', protocol: 'tcp' }
   - { port: '80', comment: 'Certbot verification', protocol: 'tcp' }
+
+# Matterbridge
+matterbridge_bridges:
+  discord:
+    status:
+      Token: '{{lookup("passwordstore", "cloud/Discord/auto/token")}}'
+      Server: 'Status'
+      RemoteNickFormat: '{NICK}@{PROTOCOL}'
+
+  api.chat2:
+    BindAddress: "0.0.0.0:4242"
+    Buffer: 1000
+    RemoteNickFormat: "{NICK}@chat2"
+
+matterbridge_gateways:
+  - { status: "waku", discord: [{ srv: "status", ch: "waku" }], api: ["chat2"], private: true }
