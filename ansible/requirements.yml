@@ -9,6 +9,11 @@
   version: 4dfd3e0b32a93e1f07a73c6794684bae21f2e556
   scm: git
 
+- name: infra-role-matterbridge
+  src: git@github.com:status-im/infra-role-matterbridge.git
+  version: 0884135a32a6f74f75f7c4c34d150d22348a94f4
+  scm: git
+
 - name: consul-service
   src: git@github.com:status-im/infra-role-consul-service.git
   version: b1d5ad5caa7d7a036fd175292fa497175bb7c54c
