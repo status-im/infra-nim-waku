@@ -42,6 +42,7 @@ services:
       --keep-alive=true
       --persist-messages=true
       --lightpush=true
+      --swap={{ nim_waku_swap_protocol_enabled | lower }}
 {% else %}
       --discovery={{ nim_waku_discovery_enabled }}
 {% endif %}

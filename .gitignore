@@ -5,3 +5,4 @@
 *.tfstate.backup
 *.retry
 ansible/files/*
+.vscode
