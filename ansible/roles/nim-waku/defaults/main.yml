@@ -14,7 +14,8 @@ nim_waku_node_key_file_path: '{{ nim_waku_cont_vol }}/nodekey'
 # WARNING: Enabling this will disable relaying of messages
 nim_waku_light_node_enabled: false
 
-# Default value to Indicate if the swap Protocol will be enabled
+# The swap protocol keeps track of the accounting state for each peer. 
+# Enabling this will display logs from the swap protocol.
 nim_waku_swap_protocol_enabled: true
 
 # Available: error, warn, info, debug
