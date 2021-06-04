@@ -4,12 +4,12 @@ matterbridge_bridges:
     status:
       Token: '{{lookup("passwordstore", "cloud/Discord/auto/token")}}'
       Server: 'Status'
-      RemoteNickFormat: '{NICK}@{PROTOCOL}'
+      RemoteNickFormat: '{NICK}@chat2'
 
   api.chat2:
     BindAddress: "0.0.0.0:4242"
     Buffer: 1000
-    RemoteNickFormat: "{NICK}@chat2"
+    RemoteNickFormat: "{NICK}@{PROTOCOL}"
 
 matterbridge_gateways:
   - { status: "waku", discord: [{ srv: "status", ch: "waku" }], api: ["chat2"], private: true }
