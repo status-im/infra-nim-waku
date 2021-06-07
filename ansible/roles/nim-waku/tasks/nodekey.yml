@@ -15,7 +15,7 @@
   throttle: 1
   set_fact:
     # Node key needs to be a 64 char hexadecimal string
-    nim_waku_random_node_key: '{{ ansible_date_time.epoch | random | hash("sha256") }}'
+    nim_waku_random_node_key: '{{ lookup("password", "/dev/null") | hash("sha256") }}'
   when: not key_file.stat.exists
 
 - name: Save generate node key to file
