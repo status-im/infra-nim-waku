@@ -6,7 +6,7 @@
 
 - name: infra-role-bootstrap
   src: git@github.com:status-im/infra-role-bootstrap.git
-  version: 4dfd3e0b32a93e1f07a73c6794684bae21f2e556
+  version: c1f535e4b2851f08b1013bd57ab42d0c1e31e3b2
   scm: git
 
 - name: infra-role-matterbridge
@@ -16,7 +16,7 @@
 
 - name: consul-service
   src: git@github.com:status-im/infra-role-consul-service.git
-  version: b1d5ad5caa7d7a036fd175292fa497175bb7c54c
+  version: 87f4498f90f0cbb66a1ddb425e8953b04ced1891
   scm: git
 
 - name: certbot

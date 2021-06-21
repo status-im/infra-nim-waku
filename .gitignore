@@ -4,5 +4,6 @@
 *.tfstate.d/
 *.tfstate.backup
 *.retry
+
 ansible/files/*
-.vscode
+__pycache__

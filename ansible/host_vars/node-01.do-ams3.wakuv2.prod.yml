@@ -2,7 +2,7 @@
 matterbridge_bridges:
   discord:
     status:
-      Token: '{{lookup("passwordstore", "cloud/Discord/auto/token")}}'
+      Token: '{{lookup("bitwarden", "Discord/autobot")}}'
       Server: 'Status'
       RemoteNickFormat: '{NICK}@{PROTOCOL}'
 
