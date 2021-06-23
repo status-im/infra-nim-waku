@@ -20,9 +20,9 @@ locals {
     }
 
     # Inherits defaults.
-    v1     = { stage = "test", env = "wakuv1" }
-    test   = { }
-    prod   = { }
+    v1   = { stage = "test", env = "wakuv1" }
+    test = {}
+    prod = {}
   }
 }
 
