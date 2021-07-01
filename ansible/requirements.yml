@@ -4,6 +4,11 @@
   version: 54125c7d291289aaea51ca313fc694d057d803fa
   scm: git
 
+- name: swap-file
+  src: git@github.com:status-im/infra-role-swap-file.git
+  version: 7b63fb7b5f0c525aa191e1a410fd79f7eab8d11a
+  scm: git
+
 - name: infra-role-bootstrap
   src: git@github.com:status-im/infra-role-bootstrap.git
   version: c1f535e4b2851f08b1013bd57ab42d0c1e31e3b2

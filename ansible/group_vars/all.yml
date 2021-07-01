@@ -8,3 +8,6 @@ bootstrap__consul_encryption_key: '{{lookup("bitwarden", "consul", field="encryp
 cont_state: started
 cont_recreate: false
 cont_restart: false
+
+# SWAP
+swap_file_size_mb: 1024
