@@ -11,12 +11,12 @@
 
 - name: infra-role-bootstrap
   src: git@github.com:status-im/infra-role-bootstrap.git
-  version: c1f535e4b2851f08b1013bd57ab42d0c1e31e3b2
+  version: a72d839866700f543c3634a6a82bf0ac0fc44c0c
   scm: git
 
 - name: infra-role-matterbridge
   src: git@github.com:status-im/infra-role-matterbridge.git
-  version: 0884135a32a6f74f75f7c4c34d150d22348a94f4
+  version: f0a144683063b3caa884f7d309b91c944db9afb2
   scm: git
 
 - name: consul-service
@@ -25,6 +25,6 @@
   scm: git
 
 - name: certbot
-  src: git@github.com:status-im/ansible-role-certbot.git
-  version: 9eb5685b986a66791c0f06b6dd9c0d1735d54098
+  src: git@github.com:status-im/infra-role-certbot.git
+  version: ba9d44e145f0aff75147eb26e7724e70ed35dcfd
   scm: git
