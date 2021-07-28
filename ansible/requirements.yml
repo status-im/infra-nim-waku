@@ -9,9 +9,9 @@
   version: 7b63fb7b5f0c525aa191e1a410fd79f7eab8d11a
   scm: git
 
-- name: infra-role-bootstrap
-  src: git@github.com:status-im/infra-role-bootstrap.git
-  version: a72d839866700f543c3634a6a82bf0ac0fc44c0c
+- name: infra-role-bootstrap-linux
+  src: git@github.com:status-im/infra-role-bootstrap-linux.git
+  version: 73d16a19970db4d1e27aa284bc3e4786b8a3c659
   scm: git
 
 - name: infra-role-matterbridge

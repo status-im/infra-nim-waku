@@ -23,9 +23,9 @@
   gather_facts: False
   hosts: all
   roles:
-    - infra-role-bootstrap/raw
+    - infra-role-bootstrap-linux/raw
 
 - name: Bootstrap admin users and Consul
   hosts: all
   roles:
-    - infra-role-bootstrap
+    - infra-role-bootstrap-linux
