@@ -14,6 +14,11 @@
   version: 73d16a19970db4d1e27aa284bc3e4786b8a3c659
   scm: git
 
+- name: infra-role-wireguard
+  src: git@github.com:status-im/infra-role-wireguard.git
+  version: dcd0ff242ef79b733af5d050d8a3766821698797
+  scm: git
+
 - name: infra-role-matterbridge
   src: git@github.com:status-im/infra-role-matterbridge.git
   version: f0a144683063b3caa884f7d309b91c944db9afb2
