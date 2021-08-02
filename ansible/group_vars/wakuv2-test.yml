@@ -6,6 +6,7 @@ nim_waku_swap_protocol_enabled: true
 
 nim_waku_p2p_tcp_port: 30303
 nim_waku_p2p_udp_port: 30303
+nim_waku_metrics_port: 8008
 
 # Enable WebSockets via Websockify
 nim_waku_websockify_enabled: true
@@ -22,11 +23,11 @@ certbot_certs:
   - domains: [ '{{ nim_waku_websockify_domain }}' ]
 
 # Open LibP2P Ports
-open_ports_default_comment: 'Nim-Waku-V2'
-open_ports_default_action: 'insert'
-open_ports_default_chain: 'DOCKER-USER'
+open_ports_default_comment: '{{ nim_waku_cont_name }}'
+open_ports_default_chain: 'SERVICES'
 open_ports_list:
   - { port: '{{ nim_waku_p2p_tcp_port }}',         protocol: 'tcp' }
   - { port: '{{ nim_waku_p2p_udp_port }}',         protocol: 'udp' }
   - { port: '{{ nim_waku_websockify_cont_port }}', protocol: 'tcp' }
   - { port: '80', comment: 'Certbot verification', protocol: 'tcp' }
+  - { port: '{{ nim_waku_metrics_port }}',         protocol: 'tcp', chain: 'VPN', ipset: 'metrics.hq' }

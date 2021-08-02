@@ -1,7 +1,7 @@
 ---
 - name: open-ports
   src: git@github.com:status-im/infra-role-open-ports.git
-  version: 54125c7d291289aaea51ca313fc694d057d803fa
+  version: f93c1cae2957bc38da04a1685f926bd84ef2292c
   scm: git
 
 - name: swap-file
@@ -11,12 +11,12 @@
 
 - name: infra-role-bootstrap-linux
   src: git@github.com:status-im/infra-role-bootstrap-linux.git
-  version: 73d16a19970db4d1e27aa284bc3e4786b8a3c659
+  version: 92d8923bbe13e4f610d9dd185aa9484c56fe6edc
   scm: git
 
 - name: infra-role-wireguard
   src: git@github.com:status-im/infra-role-wireguard.git
-  version: dcd0ff242ef79b733af5d050d8a3766821698797
+  version: d1120184a03566230a80a3aac9b86470f685de71
   scm: git
 
 - name: infra-role-matterbridge
