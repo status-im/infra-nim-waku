@@ -43,9 +43,7 @@ nim_waku_cpu_reserve: 0.20
 nim_waku_mem_reserve: '{{ (ansible_memtotal_mb * 0.2) | int }}'
 
 # container restart policy
-nim_waku_restart_condition: 'on-failure'
-nim_waku_restart_max_attempts: 3
-nim_waku_restart_delay_sec: 10
+nim_waku_restart_condition: 'any'
 nim_waku_restart_window_sec: 120
 
 # WebSockets via Websockify

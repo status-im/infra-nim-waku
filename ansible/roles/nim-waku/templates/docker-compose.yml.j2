@@ -4,7 +4,6 @@ services:
   node:
     container_name: '{{ nim_waku_cont_name }}'
     image: '{{ nim_waku_cont_image }}'
-    restart: 'always'
     labels:
       # auto-updating of docker image
       com.centurylinklabs.watchtower.enable: 'true'
@@ -17,7 +16,6 @@ services:
           memory: '{{ nim_waku_mem_reserve }}M'
       restart_policy:
         condition: '{{ nim_waku_restart_condition }}'
-        max_attempts: '{{ nim_waku_restart_max_attempts }}'
     volumes:
       - '{{ nim_waku_node_db_path }}:/data'
     ports:
@@ -61,11 +59,9 @@ services:
   websockify:
     container_name: '{{ nim_waku_websockify_cont_name }}'
     image: '{{ nim_waku_websockify_cont_image }}'
-    restart: 'always'
     deploy:
       restart_policy:
         condition: '{{ nim_waku_restart_condition }}'
-        max_attempts: '{{ nim_waku_restart_max_attempts }}'
 {% if nim_waku_websockify_ssl_cert %}
     volumes:
       - '{{ nim_waku_websockify_ssl_dir }}:{{ nim_waku_websockify_ssl_dir | mandatory }}'

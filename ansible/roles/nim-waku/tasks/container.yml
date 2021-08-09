@@ -31,3 +31,5 @@
     state: '{{ compose_state }}'
     restarted: '{{ compose_restart }}'
     recreate: '{{ compose_recreate }}'
+    # Avoid deprecation warning
+    tls_hostname: 'localhost'

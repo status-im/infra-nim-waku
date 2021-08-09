@@ -11,12 +11,12 @@
 
 - name: infra-role-bootstrap-linux
   src: git@github.com:status-im/infra-role-bootstrap-linux.git
-  version: 6a296b2e5917a192fc351fc9e14472f5c9b7aaa6
+  version: 566c1cb7e617ee4a08a908c77c963578f222eec4
   scm: git
 
 - name: infra-role-wireguard
   src: git@github.com:status-im/infra-role-wireguard.git
-  version: f0791c0edc1602b5e6be4b8b98fb0ee3e365d2e0
+  version: 9e667ab8692d11b7bd8d2ac47c66fd5038da9087
   scm: git
 
 - name: infra-role-matterbridge
