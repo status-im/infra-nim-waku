@@ -19,11 +19,6 @@
   version: c0c96298270c1763e819967ff1cad4ad876506b0
   scm: git
 
-- name: infra-role-matterbridge
-  src: git@github.com:status-im/infra-role-matterbridge.git
-  version: 46ab9d32bffc48065a60d687a04d78595fd83baf
-  scm: git
-
 - name: consul-service
   src: git@github.com:status-im/infra-role-consul-service.git
   version: 241dffb0f865f8558b5e373d20fefed0a08a21ef

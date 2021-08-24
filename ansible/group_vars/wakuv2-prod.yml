@@ -7,6 +7,7 @@ nim_waku_swap_protocol_enabled: false
 nim_waku_p2p_tcp_port: 30303
 nim_waku_p2p_udp_port: 30303
 nim_waku_metrics_port: 8008
+nim_waku_rpc_tcp_port: 8545
 
 # Enable WebSockets via Websockify
 nim_waku_websockify_enabled: true
@@ -25,9 +26,13 @@ certbot_certs:
 # Open LibP2P Ports
 open_ports_default_comment: '{{ nim_waku_cont_name }}'
 open_ports_default_chain: 'SERVICES'
-open_ports_list:
+open_ports_list_base:
+  - { port: '{{ nim_waku_rpc_tcp_port }}',         protocol: 'tcp' }
   - { port: '{{ nim_waku_p2p_tcp_port }}',         protocol: 'tcp' }
   - { port: '{{ nim_waku_p2p_udp_port }}',         protocol: 'udp' }
   - { port: '{{ nim_waku_websockify_cont_port }}', protocol: 'tcp' }
   - { port: '80', comment: 'Certbot verification', protocol: 'tcp' }
   - { port: '{{ nim_waku_metrics_port }}',         protocol: 'tcp', chain: 'VPN', ipset: 'metrics.hq' }
+
+# open_ports_list_extra defines ports to open in host_vars
+open_ports_list: '{{ open_ports_list_base + open_ports_list_extra|default([]) }}'

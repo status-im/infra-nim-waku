@@ -1,0 +1,20 @@
+chat2bridge_cont_image: chat2bridge
+chat2bridge_cont_tag: '6b1e0c30-trace'
+chat2bridge_cont_name: chat2bridge
+chat2bridge_cont_vol: '/docker/{{ chat2bridge_cont_name }}'
+
+chat2bridge_node_key: ~
+chat2bridge_node_key_file_path: '{{ chat2bridge_cont_vol }}/nodekey'
+
+chat2bridge_public_address: '{{ ansible_host }}'
+chat2bridge_p2p_tcp_port: 9000
+chat2bridge_p2p_udp_port: 9000
+chat2bridge_rpc_tcp_port: 8546
+
+# doesn't support hostnames, only IPs are allowed
+chat2bridge_mb_host_address: 10.10.0.55 # node-01.do-ams3.proxy.misc.wg
+chat2bridge_mb_host_port: 4242
+chat2bridge_mb_gateway: waku
+
+# For querying for fleet peers
+consul_url: 'http://localhost:8500/v1/catalog'
