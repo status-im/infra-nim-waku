@@ -1,0 +1,41 @@
+---
+- name: Get data centers
+  uri:
+    url: '{{ consul_url }}/datacenters'
+  register: data_centers
+
+- name: Discover nim-waku-v2 services
+  uri:
+    url: '{{ consul_url }}/service/{{ nim_waku_cont_name }}?dc={{ item }}&tag={{ env }}.{{ stage }}'
+  with_items: '{{ data_centers.json }}'
+  register: nim_waku_services
+
+- name: Combine data centers into one list
+  set_fact:
+    nim_waku_peers: '{{ nim_waku_services.results | sum(attribute="json", start=[]) }}'
+
+- name: Extract node hostnames from services
+  set_fact:
+    nim_waku_nodes: '{{ nim_waku_peers | map(attribute="Node") | list }}'
+
+- name: Call RPC and add chat2bridge node as a peer
+  uri:
+    url: 'http://{{ item }}.wg:{{ nim_waku_rpc_tcp_port }}/'
+    method: 'POST'
+    body_format: 'json'
+    return_content: true
+    body:
+      method: 'post_waku_v2_admin_v1_peers'
+      params: '{{ [[ chat2bridge_enode_addr ]] }}'
+      jsonrpc: '2.0'
+      id: 1
+  with_items: '{{ nim_waku_nodes }}'
+  register: nim_waku_rpc_resp
+
+- name: Verify RPC call was succesful
+  assert:
+    that:
+      - item.json.result is true
+    fail_msg: 'Failed to add peers: {{ item.json | to_nice_json }}'
+    quiet: true
+  with_items: '{{ nim_waku_rpc_resp.results }}'

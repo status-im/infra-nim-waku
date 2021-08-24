@@ -1,0 +1,12 @@
+# - import_tasks: nodekey.yml
+# - import_tasks: docker.yml
+
+# workaround for bug https://github.com/status-im/nim-waku/pull/710
+# newer images can remove the set_fact and use address.yml tasks
+#- import_tasks: address.yml
+- name: manually set multiaddr
+  set_fact:
+    chat2bridge_enode_addr: '/ip4/188.166.135.145/tcp/9000/p2p/16Uiu2HAmUsvgMBF7yhzFMumEcccjWfg2EPCSXtE33Tbs8jNQj2bS'
+
+- import_tasks: connect.yml
+# - import_tasks: consul.yml

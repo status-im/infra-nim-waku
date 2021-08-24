@@ -1,0 +1,5 @@
+---
+# chat2bridge is running only on node-01. we open the ports only for this host
+open_ports_list_extra:
+  - { port: '9000', comment: 'chat2bridge', protocol: 'tcp' }
+  - { port: '9000', comment: 'chat2bridge', protocol: 'udp' }

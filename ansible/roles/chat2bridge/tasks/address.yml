@@ -1,0 +1,18 @@
+---
+- name: Call debug info api
+  uri:
+    url: 'http://localhost:{{ chat2bridge_rpc_tcp_port }}/'
+    method: POST
+    body:
+      method: 'get_waku_v2_debug_v1_info'
+      params: []
+      jsonrpc: '2.0'
+      id: 1
+    status_code: 200
+    body_format: json
+  register: chat2bridge_waku_info
+  ignore_errors: true
+
+- name: Extract multiaddr from response
+  set_fact:
+    chat2bridge_enode_addr: '{{ chat2bridge_waku_info.json.result.listenStr }}'

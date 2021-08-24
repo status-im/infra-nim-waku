@@ -1,5 +1,0 @@
-- name: Configure Matterbridge
-  hosts:
-    - node-01.do-ams3.wakuv2.prod
-  roles:
-    - { role: infra-role-matterbridge,   tags: infra-role-matterbridge }
