@@ -69,8 +69,8 @@
           node_enode: '/dns4/{{ nim_waku_websockify_domain | mandatory }}/tcp/{{ nim_waku_websockify_cont_port }}/wss/p2p/{{ nim_waku_peer_id }}'
         checks:
           - name: '{{ nim_waku_cont_name }}-websocket-health'
-            type: 'tcp'
-            tcp: 'localhost:{{ nim_waku_websockify_cont_port }}'
+            type: 'script'
+            script: 'websocat -vk1E wss://localhost:{{ nim_waku_websockify_cont_port }}'
 
 - name: Remove Websockify Consul service
   set_fact:
