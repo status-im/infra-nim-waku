@@ -48,7 +48,7 @@
         checks:
           - name: 'beacon-node-metrics-health'
             type: 'http'
-            http: 'http://localhost:{{ nim_waku_metrics_port }}/metrics'
+            http: 'http://localhost:{{ nim_waku_metrics_port }}/health'
 
       - id: '{{ nim_waku_cont_name }}-rpc'
         name: '{{ nim_waku_cont_name }}-rpc'
