@@ -7,9 +7,9 @@ The inspiration for it was the [`efrecon` fork](https://github.com/efrecon/webso
 # Usage
 
 ```sh
-docker build --build-arg VERSION=0.9.0 --tag statusteam/websockify:v0.9.0 .
+docker build --build-arg VERSION=0.10.0 --tag statusteam/websockify:v0.10.0 .
 ```
 To push to [Docker Hub](https://hub.docker.com/r/statusteam/websockify) simply use:
 ```sh
-docker push statusteam/websockify:v0.9.0
+docker push statusteam/websockify:v0.10.0
 ```

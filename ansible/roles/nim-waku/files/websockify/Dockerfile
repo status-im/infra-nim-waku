@@ -1,7 +1,7 @@
 FROM alpine:3.13.5
 MAINTAINER Jakub Sokolowski <jakub@status.im>
 
-ARG VERSION=0.9.0
+ARG VERSION=0.10.0
 
 RUN apk add --update --no-cache python3 py3-numpy py3-requests
 

@@ -50,7 +50,7 @@ nim_waku_restart_window_sec: 120
 nim_waku_websockify_enabled: false
 nim_waku_websockify_verbose: false
 nim_waku_websockify_cont_name: 'websockify'
-nim_waku_websockify_cont_tag: 'v0.9.0'
+nim_waku_websockify_cont_tag: 'v0.10.0'
 nim_waku_websockify_cont_image: 'statusteam/websockify:{{ nim_waku_websockify_cont_tag }}'
 nim_waku_websockify_cont_port: 8080
 #nim_waku_websockify_domain: 'hostname.example.org'
