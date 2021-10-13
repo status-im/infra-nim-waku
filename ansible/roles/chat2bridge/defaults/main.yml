@@ -12,6 +12,8 @@ chat2bridge_cont_image: 'statusteam/chat2bridge:{{ chat2bridge_cont_tag }}'
 #chat2bridge_node_key: ~
 chat2bridge_node_key_file_path: '{{ chat2bridge_service_path }}/nodekey'
 
+# Valid levels: ERROR, WARNING, INFO, DEBUG, TRACE
+chat2bridge_log_level: 'INFO'
 chat2bridge_public_address: '{{ ansible_host }}'
 # Ports
 chat2bridge_p2p_tcp_port: 9000
