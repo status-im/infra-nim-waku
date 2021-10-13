@@ -5,7 +5,7 @@
       - id: '{{ chat2bridge_service_name }}'
         name: '{{ chat2bridge_service_name }}'
         port: '{{ chat2bridge_p2p_tcp_port }}'
-        address: '{{ chat2bridge_p2p_tcp_port }}'
+        address: '{{ ansible_local.wireguard.address }}'
         tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'chat2bridge']
         meta:
           node_enode: '{{ chat2bridge_enode_addr }}'
