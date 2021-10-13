@@ -19,6 +19,7 @@ chat2bridge_public_address: '{{ ansible_host }}'
 chat2bridge_p2p_tcp_port: 9000
 chat2bridge_p2p_udp_port: 9000
 chat2bridge_rpc_tcp_port: 8546
+chat2bridge_metrics_port: 9100
 
 # doesn't support hostnames, only IPs are allowed
 chat2bridge_mb_host_address: 10.10.0.99 # node-01.do-ams3.bridge.misc.wg

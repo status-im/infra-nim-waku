@@ -11,6 +11,7 @@ services:
       - '{{ chat2bridge_p2p_tcp_port }}:{{ chat2bridge_p2p_tcp_port }}/tcp'
       - '{{ chat2bridge_p2p_udp_port }}:{{ chat2bridge_p2p_udp_port }}/udp'
       - '{{ chat2bridge_rpc_tcp_port }}:{{ chat2bridge_rpc_tcp_port }}/tcp'
+      - '{{ chat2bridge_metrics_port }}:{{ chat2bridge_metrics_port }}/tcp'
     entrypoint: chat2bridge
     command: |
       --log-level={{ chat2bridge_log_level }}
@@ -24,3 +25,6 @@ services:
       --rpc=true
       --rpc-address=0.0.0.0
       --rpc-port={{ chat2bridge_rpc_tcp_port }}
+      --metrics-server=true
+      --metrics-server-address=0.0.0.0
+      --metrics-server-port={{ chat2bridge_metrics_port }}

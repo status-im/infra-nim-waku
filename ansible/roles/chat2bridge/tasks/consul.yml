@@ -14,6 +14,16 @@
             type: 'tcp'
             tcp: 'localhost:{{ chat2bridge_p2p_tcp_port }}'
 
+      - id: '{{ chat2bridge_service_name }}-metrics'
+        name: '{{ chat2bridge_service_name }}-metrics'
+        port: '{{ chat2bridge_metrics_port }}'
+        address: '{{ ansible_local.wireguard.address }}'
+        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'chat2bridge', 'metrics']
+        checks:
+          - name: '{{ chat2bridge_service_name }}-metrics-health'
+            type: 'http'
+            http: 'http://localhost:{{ chat2bridge_metrics_port }}/health'
+
 - name: 'Consul service definition - {{ chat2bridge_service_name }}'
   include_role: name=consul-service
   vars:
