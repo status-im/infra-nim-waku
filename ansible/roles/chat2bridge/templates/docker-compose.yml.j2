@@ -1,0 +1,25 @@
+---
+version: '3.7'
+services:
+  node:
+    container_name: '{{ chat2bridge_cont_name }}'
+    image: '{{ chat2bridge_cont_image }}'
+    labels:
+      # auto-updating of docker image
+      com.centurylinklabs.watchtower.enable: 'true'
+    ports:
+      - '{{ chat2bridge_p2p_tcp_port }}:{{ chat2bridge_p2p_tcp_port }}/tcp'
+      - '{{ chat2bridge_p2p_udp_port }}:{{ chat2bridge_p2p_udp_port }}/udp'
+      - '{{ chat2bridge_rpc_tcp_port }}:{{ chat2bridge_rpc_tcp_port }}/tcp'
+    entrypoint: chat2bridge
+    command: |
+      --mb-host-address={{ chat2bridge_mb_host_address }}
+      --mb-host-port={{ chat2bridge_mb_host_port }}
+      --mb-gateway={{ chat2bridge_mb_gateway }}
+      --nat=extip:{{ chat2bridge_public_address }}
+      --nodekey={{ chat2bridge_node_key }}
+      --libp2p-tcp-port={{ chat2bridge_p2p_tcp_port }}
+      --udp-port={{ chat2bridge_p2p_udp_port }}
+      --rpc=true
+      --rpc-address=0.0.0.0
+      --rpc-port={{ chat2bridge_rpc_tcp_port }}

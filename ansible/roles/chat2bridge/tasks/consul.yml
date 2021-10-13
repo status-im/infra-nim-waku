@@ -2,19 +2,19 @@
 - name: Define Consul services
   set_fact:
     consul_services:
-      - id: '{{ chat2bridge_cont_name }}'
-        name: '{{ chat2bridge_cont_name }}'
+      - id: '{{ chat2bridge_service_name }}'
+        name: '{{ chat2bridge_service_name }}'
         port: '{{ chat2bridge_p2p_tcp_port }}'
         address: '{{ chat2bridge_p2p_tcp_port }}'
         tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'chat2bridge']
         meta:
           node_enode: '{{ chat2bridge_enode_addr }}'
         checks:
-          - name: '{{ chat2bridge_cont_name }}-health'
+          - name: '{{ chat2bridge_service_name }}-health'
             type: 'tcp'
             tcp: 'localhost:{{ chat2bridge_p2p_tcp_port }}'
 
-- name: 'Consul service definition - {{ chat2bridge_cont_name }}'
+- name: 'Consul service definition - {{ chat2bridge_service_name }}'
   include_role: name=consul-service
   vars:
-    consul_config_name: '{{ chat2bridge_cont_name }}'
+    consul_config_name: '{{ chat2bridge_service_name }}'

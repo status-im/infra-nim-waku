@@ -1,10 +1,11 @@
 ---
-- name: 'Create container dir: {{ chat2bridge_cont_name }}'
+- name: 'Create service directory'
   file:
-    path: '{{ chat2bridge_cont_vol }}'
-    state: directory
+    dest: '{{ chat2bridge_service_path }}'
+    state: 'directory'
     owner: dockremap
     group: docker
+    mode: 0775
 
 - name: Check if node key file exists
   stat:
@@ -15,13 +16,15 @@
   throttle: 1
   set_fact:
     # Node key needs to be a 64 char hexadecimal string
-    chat2bridge_random_node_key: '{{ lookup("password", "/dev/null") | hash("sha256") }}'
-  when: not key_file.stat.exists
+    chat2bridge_node_key: '{{ lookup("password", "/dev/null") | hash("sha256") }}'
+  when: |
+    chat2bridge_node_key is not defined
+    and not key_file.stat.exists
 
 - name: Save generate node key to file
   copy:
     dest: '{{ chat2bridge_node_key_file_path | mandatory }}'
-    content: '{{ chat2bridge_random_node_key | mandatory }}'
+    content: '{{ chat2bridge_node_key | mandatory }}'
     mode: 0400
   when: not key_file.stat.exists
 
@@ -29,7 +32,13 @@
   slurp:
     src: '{{ chat2bridge_node_key_file_path }}'
   register: node_key_slurp
+  when: |
+    chat2bridge_node_key is not defined
+    and key_file.stat.exists
 
 - name: Extract node key
   set_fact:
     chat2bridge_node_key: '{{ node_key_slurp.content | b64decode | trim }}'
+  when: |
+    chat2bridge_node_key is not defined
+    and key_file.stat.exists
