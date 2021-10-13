@@ -1,6 +1,0 @@
----
-- import_tasks: nodekey.yml
-- import_tasks: docker.yml
-- import_tasks: address.yml
-#- import_tasks: connect.yml
-- import_tasks: consul.yml

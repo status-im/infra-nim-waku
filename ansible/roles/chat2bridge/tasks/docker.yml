@@ -3,9 +3,17 @@
   template:
     src: 'docker-compose.yml.j2'
     dest: '{{ chat2bridge_compose_file }}'
-    owner: dockremap
-    group: docker
+    owner: 'dockremap'
+    group: 'docker'
     mode: 0644
+
+- name: Create script for calling RPC endpoint
+  template:
+    src: 'rpc.sh.j2'
+    dest: '{{ chat2bridge_service_path }}/rpc.sh'
+    owner: 'dockremap'
+    group: 'docker'
+    mode: 0755
 
 - name: 'Create container: {{ chat2bridge_cont_name }}'
   docker_compose:
