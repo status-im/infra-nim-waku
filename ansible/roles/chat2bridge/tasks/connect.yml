@@ -40,3 +40,5 @@
     fail_msg: 'Failed to add peers: {{ item.json | to_nice_json }}'
     quiet: true
   with_items: '{{ nim_waku_rpc_resp.results }}'
+  loop_control:
+    label: '{{ item.item }}'
