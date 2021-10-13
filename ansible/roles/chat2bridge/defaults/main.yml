@@ -1,20 +1,32 @@
-chat2bridge_cont_image: chat2bridge
-chat2bridge_cont_tag: '6b1e0c30-trace'
-chat2bridge_cont_name: chat2bridge
-chat2bridge_cont_vol: '/docker/{{ chat2bridge_cont_name }}'
+---
+chat2bridge_service_name: 'chat2bridge'
+chat2bridge_service_path: '/docker/{{ chat2bridge_service_name }}'
+chat2bridge_compose_file: '{{ chat2bridge_service_path }}/docker-compose.yml'
 
-chat2bridge_node_key: ~
-chat2bridge_node_key_file_path: '{{ chat2bridge_cont_vol }}/nodekey'
+# Container
+chat2bridge_cont_name: '{{ chat2bridge_service_name }}'
+chat2bridge_cont_tag: 'latest'
+chat2bridge_cont_image: 'statusteam/chat2bridge:{{ chat2bridge_cont_tag }}'
+
+# Node Key
+#chat2bridge_node_key: ~
+chat2bridge_node_key_file_path: '{{ chat2bridge_service_path }}/nodekey'
 
 chat2bridge_public_address: '{{ ansible_host }}'
+# Ports
 chat2bridge_p2p_tcp_port: 9000
 chat2bridge_p2p_udp_port: 9000
 chat2bridge_rpc_tcp_port: 8546
 
 # doesn't support hostnames, only IPs are allowed
-chat2bridge_mb_host_address: 10.10.0.55 # node-01.do-ams3.proxy.misc.wg
+chat2bridge_mb_host_address: 10.10.0.99 # node-01.do-ams3.bridge.misc.wg
 chat2bridge_mb_host_port: 4242
-chat2bridge_mb_gateway: waku
+chat2bridge_mb_gateway: 'waku'
 
 # For querying for fleet peers
 consul_url: 'http://localhost:8500/v1/catalog'
+
+# general container management
+compose_recreate: 'smart'
+compose_state: 'present'
+compose_restart: false

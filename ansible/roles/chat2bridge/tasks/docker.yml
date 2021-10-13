@@ -1,21 +1,18 @@
 ---
-- name: Create docker container
-  docker_container:
-    name: '{{ chat2bridge_cont_name }}'
-    image: '{{ chat2bridge_cont_image }}:{{ chat2bridge_cont_tag }}'
-    entrypoint: chat2bridge
-    command: |
-      --mb-host-address={{ chat2bridge_mb_host_address }}
-      --mb-host-port={{ chat2bridge_mb_host_port }}
-      --mb-gateway={{ chat2bridge_mb_gateway }}
-      --nat=extip:{{ chat2bridge_public_address }}
-      --nodekey={{ chat2bridge_node_key }}
-      --libp2p-tcp-port={{ chat2bridge_p2p_tcp_port }}
-      --udp-port={{ chat2bridge_p2p_udp_port }}
-      --rpc=true
-      --rpc-address=0.0.0.0
-      --rpc-port={{ chat2bridge_rpc_tcp_port }}
-    ports:
-      - '{{ chat2bridge_p2p_tcp_port }}:{{ chat2bridge_p2p_tcp_port }}/tcp'
-      - '{{ chat2bridge_p2p_udp_port }}:{{ chat2bridge_p2p_udp_port }}/udp'
-      - '{{ chat2bridge_rpc_tcp_port }}:{{ chat2bridge_rpc_tcp_port }}/tcp'
+- name: 'Create compose file: {{ chat2bridge_cont_name }}'
+  template:
+    src: 'docker-compose.yml.j2'
+    dest: '{{ chat2bridge_compose_file }}'
+    owner: dockremap
+    group: docker
+    mode: 0644
+
+- name: 'Create container: {{ chat2bridge_cont_name }}'
+  docker_compose:
+    project_src: '{{ chat2bridge_service_path }}'
+    pull: true
+    state: '{{ compose_state }}'
+    restarted: '{{ compose_restart }}'
+    recreate: '{{ compose_recreate }}'
+    # Avoid deprecation warning
+    tls_hostname: 'localhost'
