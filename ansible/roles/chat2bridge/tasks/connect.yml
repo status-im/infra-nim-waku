@@ -18,6 +18,7 @@
   set_fact:
     nim_waku_nodes: '{{ nim_waku_peers | map(attribute="Node") | list }}'
 
+# We connect nodes to the bridge since nodes get restarted more often
 - name: Call RPC and add chat2bridge node as a peer
   uri:
     url: 'http://{{ item }}.wg:{{ nim_waku_rpc_tcp_port }}/'

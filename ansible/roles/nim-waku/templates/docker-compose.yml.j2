@@ -19,7 +19,7 @@ services:
     volumes:
       - '{{ nim_waku_node_db_path }}:/data'
     ports:
-      - '127.0.0.1:{{ nim_waku_rpc_tcp_port }}:{{ nim_waku_rpc_tcp_port }}/tcp'
+      - '{{ nim_waku_rpc_tcp_addr }}:{{ nim_waku_rpc_tcp_port }}:{{ nim_waku_rpc_tcp_port }}/tcp'
       - '{{ nim_waku_p2p_tcp_port }}:{{ nim_waku_p2p_tcp_port }}/tcp'
       - '{{ nim_waku_p2p_udp_port }}:{{ nim_waku_p2p_udp_port }}/udp'
       - '{{ nim_waku_metrics_port }}:{{ nim_waku_metrics_port }}/tcp'

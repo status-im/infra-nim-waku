@@ -28,6 +28,7 @@ nim_waku_bootstrap_fleet: 'test'
 nim_waku_discovery_enabled: false
 
 nim_waku_public_address: '{{ ansible_host }}'
+nim_waku_rpc_tcp_addr: '127.0.0.1'
 nim_waku_rpc_tcp_port: 8545
 nim_waku_p2p_tcp_port: 30303
 nim_waku_p2p_udp_port: 30303

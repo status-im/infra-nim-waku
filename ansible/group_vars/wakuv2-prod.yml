@@ -8,6 +8,7 @@ nim_waku_p2p_tcp_port: 30303
 nim_waku_p2p_udp_port: 30303
 nim_waku_metrics_port: 8008
 nim_waku_rpc_tcp_port: 8545
+nim_waku_rpc_tcp_addr: 0.0.0.0
 
 # Enable WebSockets via Websockify
 nim_waku_websockify_enabled: true
@@ -32,6 +33,7 @@ open_ports_list_base:
   - { port: '{{ nim_waku_websockify_cont_port }}', protocol: 'tcp' }
   - { port: '80', comment: 'Certbot verification', protocol: 'tcp' }
   - { port: '{{ nim_waku_metrics_port }}',         protocol: 'tcp', chain: 'VPN', ipset: 'metrics.hq' }
+  - { port: '{{ nim_waku_rpc_tcp_port }}',         protocol: 'tcp', chain: 'VPN', ipset: '{{ env }}.{{ stage }}' }
 
 # open_ports_list_extra defines ports to open in host_vars
 open_ports_list: '{{ open_ports_list_base + open_ports_list_extra|default([]) }}'
