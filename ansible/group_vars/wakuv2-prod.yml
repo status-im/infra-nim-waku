@@ -27,7 +27,6 @@ certbot_certs:
 open_ports_default_comment: '{{ nim_waku_cont_name }}'
 open_ports_default_chain: 'SERVICES'
 open_ports_list_base:
-  - { port: '{{ nim_waku_rpc_tcp_port }}',         protocol: 'tcp' }
   - { port: '{{ nim_waku_p2p_tcp_port }}',         protocol: 'tcp' }
   - { port: '{{ nim_waku_p2p_udp_port }}',         protocol: 'udp' }
   - { port: '{{ nim_waku_websockify_cont_port }}', protocol: 'tcp' }
