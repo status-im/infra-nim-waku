@@ -30,7 +30,7 @@
         name: '{{ nim_waku_cont_name }}'
         port: '{{ nim_waku_p2p_tcp_port }}'
         address: '{{ nim_waku_p2p_tcp_port }}'
-        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku']
+        tags: ['env:{{ env }}', 'stage:{{ stage }}', 'nim', 'waku', 'libp2p']
         meta:
           node_enode: '{{ waku_info.json.result.listenStr | default("unknown") }}'
         checks:
@@ -42,7 +42,7 @@
         name: '{{ nim_waku_cont_name }}-metrics'
         port: '{{ nim_waku_metrics_port }}'
         address: '{{ ansible_local.wireguard.vpn_ip }}'
-        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'metrics']
+        tags: ['env:{{ env }}', 'stage:{{ stage }}', 'nim', 'waku', 'metrics']
         meta:
           container: '{{ nim_waku_cont_name }}'
         checks:
@@ -54,7 +54,7 @@
         name: '{{ nim_waku_cont_name }}-rpc'
         port: '{{ nim_waku_rpc_tcp_port }}'
         address: '{{ ansible_local.wireguard.vpn_ip }}'
-        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'rpc']
+        tags: ['env:{{ env }}', 'stage:{{ stage }}', 'nim', 'waku', 'rpc']
         #checks:
         #  - id: '{{ nim_waku_cont_name }}-rpc-health'
         #    type: 'script'
@@ -64,7 +64,7 @@
         name: '{{ nim_waku_cont_name }}-websocket'
         port: '{{ nim_waku_websockify_cont_port }}'
         address: '{{ nim_waku_p2p_tcp_port }}'
-        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'websocket']
+        tags: ['env:{{ env }}', 'stage:{{ stage }}', 'nim', 'waku', 'websocket']
         meta:
           node_enode: '/dns4/{{ nim_waku_websockify_domain | mandatory }}/tcp/{{ nim_waku_websockify_cont_port }}/wss/p2p/{{ nim_waku_peer_id }}'
         checks:

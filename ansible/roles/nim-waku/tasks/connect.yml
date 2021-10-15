@@ -6,7 +6,7 @@
 
 - name: Discover other fleet peers
   uri:
-    url: '{{ consul_url }}/service/{{ nim_waku_cont_name }}?dc={{ item }}&tag={{ env }}.{{ stage }}'
+    url: '{{ consul_url }}/service/{{ nim_waku_cont_name }}?dc={{ item }}&tag=stage:{{ stage }}'
   with_items: '{{ data_centers.json }}'
   register: nim_waku_services
 
