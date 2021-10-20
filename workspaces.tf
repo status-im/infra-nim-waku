@@ -14,9 +14,9 @@ locals {
       env   = "wakuv2" /* Because we used to have wakuv1 */
       stage = terraform.workspace
 
-      do_size = "s-1vcpu-1gb"        /* DigitalOcean */
-      ac_size = "ecs.t5-lc1m1.small" /* Alibaba Cloud */
-      gc_size = "g1-small"           /* Google Cloud */
+      do_type = "s-1vcpu-1gb"        /* DigitalOcean */
+      ac_type = "ecs.t5-lc1m1.small" /* Alibaba Cloud */
+      gc_type = "g1-small"           /* Google Cloud */
 
       dns_records = []
     }

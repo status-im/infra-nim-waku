@@ -1,4 +1,4 @@
-module "nim_hosts" {
+module "hosts" {
   source = "github.com/status-im/infra-tf-multi-provider"
 
   /* node type */
@@ -11,9 +11,9 @@ module "nim_hosts" {
   host_count = local.ws["hosts_count"]
 
   /* instance sizes */
-  do_size = local.ws["do_size"] /* DigitalOcean */
-  ac_size = local.ws["ac_size"] /* Alibaba Cloud */
-  gc_size = local.ws["gc_size"] /* Google Cloud */
+  do_type = local.ws["do_type"] /* DigitalOcean */
+  ac_type = local.ws["ac_type"] /* Alibaba Cloud */
+  gc_type = local.ws["gc_type"] /* Google Cloud */
 
   /* firewall */
   open_tcp_ports = [
