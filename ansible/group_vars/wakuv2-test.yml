@@ -1,4 +1,8 @@
 ---
+# Custom SSH accounts for Nimbus fleet, should start from UID 8000.
+bootstrap__active_extra_users:
+  - { name: reeshav, uid: 8001, key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDQiWqUOSeYSz9Uzb7YXPyJxV5bmoOB8+0WSMANsgTMfEe9mOaqVIRVlKyzjiSFiL12VV98CbO80Vw9cH6VPMKYRql3FjPy1TgNsD2XnzUqKkDk6GgoDqa/KvrgnRoHYC81D7Dv2HCqvwLfxXK2vvYpcNN2t30vx0iSsPQjr6ejgssWpNOhgqZxdZ967dAfn7+ReqWyMNle6CzNUN/Ih/5DG0wyVFJ+/thgc/uqOGGidemgrDt8KHmM6ENIoPWcgNK7Ul8jZOrFgBps11CpAKhqoT8ElTkeVfcqEjYcEc+by3VTVN7rkytJH58mm6veE2Zq7/R4oyALoezhljgPsa/BfAxFufMs5ibaDgQrfwlq+hfynG5RP68/bfQgqv11BLNTmcxxFgPk0qbLeS4Bu5LJVsiwzjk+kAe9Xa7ipKRR7CI5YhifadjLCa3Ph7rbCcRtkrTDsKBUtTmGsKv7V5kx2VgK+WFL0V3iaDvsgbA2ssxQGXeqz9hD9/wjVJ+VrDs= reeshav@status.im' }
+
 # Tag dependent on fleet: test, prod
 nim_waku_cont_tag: 'deploy-v2-{{ stage }}'
 nim_waku_cont_name: 'nim-waku-v2'
