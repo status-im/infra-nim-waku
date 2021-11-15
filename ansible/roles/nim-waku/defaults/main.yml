@@ -66,3 +66,11 @@ consul_url: 'http://localhost:8500/v1/catalog'
 compose_recreate: 'smart'
 compose_state: 'present'
 compose_restart: false
+
+#websocket config in nim waku
+nim_waku_websocket_enabled: false
+nim_waku_websocket_cont_port: 8000
+#nim_waku_websocket_domain: 'hostname.example.org'
+#nim_waku_websocket_ssl_dir: '/etc/letsencrypt'
+#nim_waku_websocket_ssl_cert: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/fullchain.pem'
+#nim_waku_websocket_ssl_key: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/privkey.pem'
