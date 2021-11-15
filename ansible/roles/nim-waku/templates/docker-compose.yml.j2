@@ -18,11 +18,15 @@ services:
         condition: '{{ nim_waku_restart_condition }}'
     volumes:
       - '{{ nim_waku_node_db_path }}:/data'
+{% if nim_waku_websocket_enabled %}
+      - '{{ nim_waku_websocket_ssl_dir }}:{{ nim_waku_websocket_ssl_dir | mandatory }}'
+{% endif %}
     ports:
       - '{{ nim_waku_rpc_tcp_addr }}:{{ nim_waku_rpc_tcp_port }}:{{ nim_waku_rpc_tcp_port }}/tcp'
       - '{{ nim_waku_p2p_tcp_port }}:{{ nim_waku_p2p_tcp_port }}/tcp'
       - '{{ nim_waku_p2p_udp_port }}:{{ nim_waku_p2p_udp_port }}/udp'
       - '{{ nim_waku_metrics_port }}:{{ nim_waku_metrics_port }}/tcp'
+      - '{{ nim_waku_websocket_cont_port }}:{{ nim_waku_websocket_cont_port }}/tcp'
     healthcheck:
       test: ["CMD", "wget", "-qO-", "--header", "Content-type:application/json",
         "--post-data", "{\"id\":1,\"jsonrpc\":\"2.0\",\"method\": \"get_waku_v2_debug_v1_info\",\"params\":[]}",
@@ -41,6 +45,12 @@ services:
       --persist-messages=true
       --lightpush=true
       --swap={{ nim_waku_swap_protocol_enabled | lower }}
+{% if nim_waku_websocket_enabled %}
+      --websocket-secure-support=true
+      --websocket-secure-key-path={{ nim_waku_websocket_ssl_key }}
+      --websocket-secure-cert-path={{ nim_waku_websocket_ssl_cert }}
+      --websocket-port={{ nim_waku_websocket_cont_port }} 
+{% endif %}
 {% else %}
       --discovery={{ nim_waku_discovery_enabled }}
 {% endif %}
