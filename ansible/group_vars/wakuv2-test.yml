@@ -2,6 +2,7 @@
 # Custom SSH accounts for Nimbus fleet, should start from UID 8000.
 bootstrap__active_extra_users:
   - { name: reeshav, uid: 8001, key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDQiWqUOSeYSz9Uzb7YXPyJxV5bmoOB8+0WSMANsgTMfEe9mOaqVIRVlKyzjiSFiL12VV98CbO80Vw9cH6VPMKYRql3FjPy1TgNsD2XnzUqKkDk6GgoDqa/KvrgnRoHYC81D7Dv2HCqvwLfxXK2vvYpcNN2t30vx0iSsPQjr6ejgssWpNOhgqZxdZ967dAfn7+ReqWyMNle6CzNUN/Ih/5DG0wyVFJ+/thgc/uqOGGidemgrDt8KHmM6ENIoPWcgNK7Ul8jZOrFgBps11CpAKhqoT8ElTkeVfcqEjYcEc+by3VTVN7rkytJH58mm6veE2Zq7/R4oyALoezhljgPsa/BfAxFufMs5ibaDgQrfwlq+hfynG5RP68/bfQgqv11BLNTmcxxFgPk0qbLeS4Bu5LJVsiwzjk+kAe9Xa7ipKRR7CI5YhifadjLCa3Ph7rbCcRtkrTDsKBUtTmGsKv7V5kx2VgK+WFL0V3iaDvsgbA2ssxQGXeqz9hD9/wjVJ+VrDs= reeshav@status.im' }
+  - { name: tanguy,  uid: 8002, key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5wbFl7pJ+Vl6Csw7gh50+fYiuH/HAV+dLN0997isreWsrr+H/6uTDwvtYmbfG8Nrr1NVzFjrGXTUhF3lmSTzC7l+xdlUE9QoOumTF7OI7A79Wp0B3kzKk8YAKskyCtz4JUtvJaExJhxTy385dbXXrS/hV1lfciLiDp+rkg+EkCTedMeWVWhaJpoaS8OY/UzoYfPClFmGM5sAMF9UNPPIGjvCibTdt2uGerOki4FIcgqXARzOc1J6bEA1qTeYRh1wjv6KC3AyLRsLEooXqoviVYUm0bVLMZteTpIdY5N61FlytPcFpjAla9SCJYwPd3ud1hdurcQ5+wHuaAyKksCa6Qnhf/vX9LMFwbOkOqGLNKY5sdRhDyN5xbNdfk4jnY3E+8Z0CNmSV+dpmpwcOahNTB65t5zqcU/NXynFbALf3j3A9uklQ5Or1Y8ytnzjfSko+TQZHBr5/w810vxS3VNS470wGjyzhyVKSg1qNJXb+m2GLT9k5lBxnl7j3o8CLbOs= tanguy@wheatley' }
 
 # Tag dependent on fleet: test, prod
 nim_waku_cont_tag: 'deploy-v2-{{ stage }}'
