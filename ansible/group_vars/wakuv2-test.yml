@@ -40,6 +40,7 @@ open_ports_default_chain: 'SERVICES'
 open_ports_list:
   - { port: '{{ nim_waku_p2p_tcp_port }}',         protocol: 'tcp' }
   - { port: '{{ nim_waku_p2p_udp_port }}',         protocol: 'udp' }
+  - { port: '{{ nim_waku_websocket_cont_port }}',  protocol: 'tcp' }
   - { port: '{{ nim_waku_websockify_cont_port }}', protocol: 'tcp' }
   - { port: '80', comment: 'Certbot verification', protocol: 'tcp' }
   - { port: '{{ nim_waku_metrics_port }}',         protocol: 'tcp', chain: 'VPN', ipset: 'metrics.hq' }
