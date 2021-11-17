@@ -19,3 +19,8 @@ node-01.ac-cn-hongkong-c.wakuv1.test
 node-01.do-ams3.wakuv1.test
 node-01.gc-us-central1-a.wakuv1.test
 
+[wakuv1.test]
+node-01.ac-cn-hongkong-c.wakuv1.test
+node-01.do-ams3.wakuv1.test
+node-01.gc-us-central1-a.wakuv1.test
+
