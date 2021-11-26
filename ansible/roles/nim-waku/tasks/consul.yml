@@ -1,28 +1,4 @@
 ---
-- name: 'Extract address of the node for Consul'
-  uri:
-    url: 'http://localhost:{{ nim_waku_rpc_tcp_port }}/'
-    method: POST
-    body: 
-      method: 'get_waku_v2_debug_v1_info'
-      params: []
-      jsonrpc: '2.0'
-      id: 1
-    status_code: 200
-    body_format: json
-  register: waku_info
-  ignore_errors: true
-
-- name: Verify we got the node address
-  assert:
-    that: 'waku_info.json.result.listenStr is defined'
-    fail_msg: 'Did not receive Nim-Waku node address!'
-    quiet: true
-
-- name: Extract peer ID from RPC response
-  set_fact:
-    nim_waku_peer_id: '{{ waku_info.json.result.listenStr.split("/") | last }}'
-
 - name: Define Consul services
   set_fact:
     consul_services:
@@ -32,7 +8,7 @@
         address: '{{ nim_waku_p2p_tcp_port }}'
         tags: ['env:{{ env }}', 'stage:{{ stage }}', 'nim', 'waku', 'libp2p']
         meta:
-          node_enode: '{{ waku_info.json.result.listenStr | default("unknown") }}'
+          node_enode: '{{ nim_waku_libp2p_multiaddr | default("unknown") }}'
         checks:
           - name: '{{ nim_waku_cont_name }}-health'
             type: 'tcp'
