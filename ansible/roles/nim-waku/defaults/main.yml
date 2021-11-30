@@ -74,3 +74,6 @@ nim_waku_websocket_cont_port: 8000
 #nim_waku_websocket_ssl_dir: '/etc/letsencrypt'
 #nim_waku_websocket_ssl_cert: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/fullchain.pem'
 #nim_waku_websocket_ssl_key: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/privkey.pem'
+
+# maximum libp2p connections
+nim_waku_max_connections: 150

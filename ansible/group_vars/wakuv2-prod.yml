@@ -10,6 +10,8 @@ nim_waku_metrics_port: 8008
 nim_waku_rpc_tcp_port: 8545
 nim_waku_rpc_tcp_addr: 0.0.0.0
 
+nim_waku_max_connections: 150
+
 # Enable WebSockets via Websockify
 nim_waku_websockify_enabled: true
 nim_waku_websockify_cont_port: 443
