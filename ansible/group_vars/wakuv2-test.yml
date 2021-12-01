@@ -13,7 +13,7 @@ nim_waku_p2p_tcp_port: 30303
 nim_waku_p2p_udp_port: 30303
 nim_waku_metrics_port: 8008
 
-nim_waku_max_connections: 150
+nim_waku_p2p_max_connections: 150
 
 # Enable websockets in Waku
 nim_waku_websocket_enabled: true
