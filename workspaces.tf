@@ -33,7 +33,16 @@ locals {
         { name = "26XUO2RSK7DWIGSTCBP4DQAH5Y.", dest = "enr:-KO4QFi0j_vwI2p4j9lPn_mCEPCx3G32ZQt1uTd8aql6chBncFQqbu5m6sW18mwpidE_Fn1U_5RrtWmqwWpVRicH9TIBgmlkgnY0gmlwhC_y0kmKbXVsdGlhZGRyc4wACgQv8tJJBh9A3gOJc2VjcDI1NmsxoQIQJvj-KupljjSnBp2yz1PFl2SeELNwMSG68nL3Oz1SrIN0Y3CCdl-Fd2FrdTIP" },
       ]
     }
-    prod = {}
+    prod = {
+      dns_records = [
+        { name = "", ttl = 60,                  dest = "enrtree-root:v1 e=2FPT7YBR4ZHGPTSEDRD5D6N7MU l=FDXN3SN67NA5DKA4J2GOK7BVQI seq=1 sig=6fuJ5SvsUX_9se681PVe2ZToyTfkm6WHTD9hoy3RhFtDMTD2ZvxgJ3V1283aFhBsftch0T3UvKohWM404A7eIgE" },
+        { name = "FDXN3SN67NA5DKA4J2GOK7BVQI.", dest = "enrtree-branch:" },
+        { name = "2FPT7YBR4ZHGPTSEDRD5D6N7MU.", dest = "enrtree-branch:MFAJGGC6CLWF6CXCR2V6CNED7Q,QHKIV5TAXBC6N24HILY7ASGSFU,WTAZHIHIXAEAFB4KVC7SNBIFLU" },
+        { name = "MFAJGGC6CLWF6CXCR2V6CNED7Q.", dest = "enr:-Iu4QJUcYA1ULMF9UfwOZBLNPT0dSxrVtGRws6KhE9b3WH9IS-1gAfTSzJjm30gp3Wz46upPJbdarGOIZTNlG3k_n0YBgmlkgnY0gmlwhAjS3ueJc2VjcDI1NmsxoQKNAvlb34B4l68WYt7pg4qKFzBmPRb2I-f3dUOBHku3soN0Y3CCdl-Fd2FrdTIP" },
+        { name = "QHKIV5TAXBC6N24HILY7ASGSFU.", dest = "enr:-Iu4QALmEco5FZq1DDf3egW27AJ6YSg4Rpdp3RJxQlLQbdrNDxsYJXIVH8ZUh346EVOldWhxr8zoiyfBwJPDgPoNoOsBgmlkgnY0gmlwhLymh5GJc2VjcDI1NmsxoQNuXVf_MkjDcQAka2YcxWfhnbGGlKhRo_kSWwcoK_uGVYN0Y3CCdl-Fd2FrdTIP" },
+        { name = "WTAZHIHIXAEAFB4KVC7SNBIFLU.", dest = "enr:-Iu4QE2RvpRiwWwoCf-EkwCx25_ftH5VOiv67bp2gO1qzi6yKzYMV3ZrG4JDEOyJuZs5miH-nRtM3r48ksb6QL2gvWYBgmlkgnY0gmlwhCJ5ZGyJc2VjcDI1NmsxoQP99JB4EKn12UYqGuCf7uWrIF0yeYsP_MN5RCAh-Exbv4N0Y3CCdl-Fd2FrdTIP" },
+      ]
+    }
   }
 }
 
