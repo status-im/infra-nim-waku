@@ -12,13 +12,21 @@ nim_waku_rpc_tcp_addr: 0.0.0.0
 
 nim_waku_p2p_max_connections: 150
 
+# Enable websockets in Waku
+nim_waku_websocket_enabled: true
+nim_waku_websocket_cont_port: 8000
+nim_waku_websocket_domain: '{{ dns_entry }}'
+nim_waku_websocket_ssl_dir: '/etc/letsencrypt'
+nim_waku_websocket_ssl_cert: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/fullchain.pem'
+nim_waku_websocket_ssl_key: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/privkey.pem'
+
 # Enable WebSockets via Websockify
 nim_waku_websockify_enabled: true
 nim_waku_websockify_cont_port: 443
-nim_waku_websockify_domain: '{{ dns_entry }}'
-nim_waku_websockify_ssl_dir: '/etc/letsencrypt'
-nim_waku_websockify_ssl_cert: '/etc/letsencrypt/live/{{ nim_waku_websockify_domain }}/fullchain.pem'
-nim_waku_websockify_ssl_key: '/etc/letsencrypt/live/{{ nim_waku_websockify_domain }}/privkey.pem'
+nim_waku_websockify_domain: '{{ nim_waku_websocket_domain }}'
+nim_waku_websockify_ssl_dir: '{{ nim_waku_websocket_ssl_dir }}'
+nim_waku_websockify_ssl_cert: '{{ nim_waku_websocket_ssl_cert }}'
+nim_waku_websockify_ssl_key: '{{ nim_waku_websocket_ssl_key }}'
 
 # LetsEncrypt via Certbot
 certbot_docker_enabled: true
@@ -32,6 +40,7 @@ open_ports_default_chain: 'SERVICES'
 open_ports_list_base:
   - { port: '{{ nim_waku_p2p_tcp_port }}',         protocol: 'tcp' }
   - { port: '{{ nim_waku_p2p_udp_port }}',         protocol: 'udp' }
+  - { port: '{{ nim_waku_websocket_cont_port }}',  protocol: 'tcp' }
   - { port: '{{ nim_waku_websockify_cont_port }}', protocol: 'tcp' }
   - { port: '80', comment: 'Certbot verification', protocol: 'tcp' }
   - { port: '{{ nim_waku_metrics_port }}',         protocol: 'tcp', chain: 'VPN', ipset: 'metrics.hq' }
