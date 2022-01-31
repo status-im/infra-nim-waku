@@ -11,12 +11,12 @@
 
 - name: infra-role-bootstrap-linux
   src: git@github.com:status-im/infra-role-bootstrap-linux.git
-  version: d66b056486676bef9ff67fb5b7fc52221e08c94a
+  version: c1cef99575a2d56718bba482761f005450129aaa
   scm: git
 
 - name: infra-role-wireguard
   src: git@github.com:status-im/infra-role-wireguard.git
-  version: c0c96298270c1763e819967ff1cad4ad876506b0
+  version: f223ab23c98163805e84e470039eb3caf6f219c4
   scm: git
 
 - name: consul-service
