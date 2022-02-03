@@ -46,6 +46,7 @@ services:
       --lightpush=true
       --swap={{ nim_waku_swap_protocol_enabled | lower }}
       --max-connections={{ nim_waku_p2p_max_connections }}
+      --store-capacity={{ nim_waku_store_capacity }}
 {% if nim_waku_websocket_enabled %}
       --websocket-secure-support=true
       --websocket-secure-key-path={{ nim_waku_websocket_ssl_key }}

@@ -36,6 +36,9 @@ nim_waku_p2p_udp_port: 30303
 # maximum libp2p connections
 nim_waku_p2p_max_connections: 150
 
+# maximum number of stored historical messages
+nim_waku_store_capacity: 10000
+
 # metrics are disabled by default
 nim_waku_metrics_enabled: true
 nim_waku_metrics_port: 8008
