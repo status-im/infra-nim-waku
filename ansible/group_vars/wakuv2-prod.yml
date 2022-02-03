@@ -12,6 +12,8 @@ nim_waku_rpc_tcp_addr: 0.0.0.0
 
 nim_waku_p2p_max_connections: 150
 
+nim_waku_store_capacity: 10000
+
 # Enable websockets in Waku
 nim_waku_websocket_enabled: true
 nim_waku_websocket_cont_port: 8000
