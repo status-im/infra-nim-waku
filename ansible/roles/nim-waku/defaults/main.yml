@@ -44,8 +44,8 @@ nim_waku_metrics_enabled: true
 nim_waku_metrics_port: 8008
 
 # resource limits, mem in MB
-nim_waku_cpu_limit: 0.60
-nim_waku_mem_limit: '{{ (ansible_memtotal_mb * 0.6) | int }}'
+nim_waku_cpu_limit: 0.70
+nim_waku_mem_limit: '{{ (ansible_memtotal_mb * 0.7) | int }}'
 nim_waku_cpu_reserve: 0.20
 nim_waku_mem_reserve: '{{ (ansible_memtotal_mb * 0.2) | int }}'
 
