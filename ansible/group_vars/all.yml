@@ -10,7 +10,7 @@ cont_recreate: false
 cont_restart: false
 
 # SWAP
-swap_file_size_mb: 1024
+swap_file_size_mb: 2048
 
 # Certbot renewal
 certbot_containers_to_stop: ['websockify']
