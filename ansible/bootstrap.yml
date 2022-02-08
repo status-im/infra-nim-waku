@@ -22,10 +22,12 @@
 - name: Bootstrap Python support for Ansible
   gather_facts: False
   hosts: all
+  serial: '{{ serial|default(1) }}'
   roles:
     - infra-role-bootstrap-linux/raw
 
 - name: Bootstrap admin users and Consul
   hosts: all
+  serial: '{{ serial|default(1) }}'
   roles:
     - infra-role-bootstrap-linux
