@@ -1,8 +1,9 @@
 ---
 # Root password
 bootstrap__root_pass: '{{lookup("bitwarden", "root-pass")}}'
-# Consul encryption key
+# Consul encryption key and ACL token
 bootstrap__consul_encryption_key: '{{lookup("bitwarden", "consul", field="encryption-key")}}'
+bootstarp__consul_agent_acl_token: '{{lookup("bitwarden", "consul", field="agent-acl-token")}}'
 
 # general container config
 cont_state: started
