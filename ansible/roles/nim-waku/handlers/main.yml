@@ -1,3 +1,0 @@
----
-- name: Save iptables rules
-  shell: iptables-save > /etc/iptables/rules.v4

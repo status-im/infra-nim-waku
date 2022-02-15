@@ -9,19 +9,22 @@ bootstrap__active_extra_users:
 # Tag dependent on fleet: test, prod
 nim_waku_cont_tag: 'deploy-v2-{{ stage }}'
 nim_waku_cont_name: 'nim-waku-v2'
-nim_waku_swap_protocol_enabled: true
+nim_waku_protocols_enabled: ['relay', 'store', 'filter', 'swap', 'lightpush']
 
+# Ports
 nim_waku_p2p_tcp_port: 30303
 nim_waku_p2p_udp_port: 30303
+nim_waku_websock_port: 8000
 nim_waku_metrics_port: 8008
+nim_waku_rpc_tcp_port: 8545
 
+# Limits
 nim_waku_p2p_max_connections: 150
-
 nim_waku_store_capacity: 10000
 
 # Enable websockets in Waku
 nim_waku_websocket_enabled: true
-nim_waku_websocket_cont_port: 8000
+nim_waku_websocket_secure_enabled: true
 nim_waku_websocket_domain: '{{ dns_entry }}'
 nim_waku_websocket_ssl_dir: '/etc/letsencrypt'
 nim_waku_websocket_ssl_cert: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/fullchain.pem'
@@ -38,16 +41,19 @@ nim_waku_websockify_ssl_key: '{{ nim_waku_websocket_ssl_key }}'
 # LetsEncrypt via Certbot
 certbot_docker_enabled: true
 certbot_admin_email: 'devops@status.im'
+certbot_containers_to_stop: ['websockify']
 certbot_certs:
   - domains: [ '{{ nim_waku_websockify_domain }}' ]
 
 # Open LibP2P Ports
 open_ports_default_comment: '{{ nim_waku_cont_name }}'
 open_ports_default_chain: 'SERVICES'
+open_ports_default_protocol: 'tcp'
 open_ports_list:
-  - { port: '{{ nim_waku_p2p_tcp_port }}',         protocol: 'tcp' }
-  - { port: '{{ nim_waku_p2p_udp_port }}',         protocol: 'udp' }
-  - { port: '{{ nim_waku_websocket_cont_port }}',  protocol: 'tcp' }
-  - { port: '{{ nim_waku_websockify_cont_port }}', protocol: 'tcp' }
-  - { port: '80', comment: 'Certbot verification', protocol: 'tcp' }
-  - { port: '{{ nim_waku_metrics_port }}',         protocol: 'tcp', chain: 'VPN', ipset: 'metrics.hq' }
+  - { port: '{{ nim_waku_p2p_udp_port }}', protocol: 'udp' }
+  - { port: '{{ nim_waku_p2p_tcp_port }}' }
+  - { port: '{{ nim_waku_websock_port }}' }
+  - { port: '{{ nim_waku_websockify_cont_port }}' }
+  - { port: '{{ nim_waku_websockify_cont_port }}' }
+  - { port: '80', comment: 'Certbot verification' }
+  - { port: '{{ nim_waku_metrics_port }}', chain: 'VPN', ipset: 'metrics.hq' }
