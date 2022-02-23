@@ -11,17 +11,17 @@
 
 - name: infra-role-bootstrap-linux
   src: git@github.com:status-im/infra-role-bootstrap-linux.git
-  version: 5a8e8e182ce638e478ca1c94f5f46baf89c10953
+  version: 63998e7c92ed2db1dc1522e0bd5ca398c5434e5c
   scm: git
 
 - name: infra-role-wireguard
   src: git@github.com:status-im/infra-role-wireguard.git
-  version: 3c489838cc65984bc8daacde1eaf1e9256852810
+  version: 56d92683bda23f75228cc4ac93b5fae47adbabeb
   scm: git
 
 - name: consul-service
   src: git@github.com:status-im/infra-role-consul-service.git
-  version: ac9796d029298699abdd826d5775ceab3da55021
+  version: 7ee51839e6a032e6ca27dfb00951e897b5385609
   scm: git
 
 - name: certbot
@@ -31,5 +31,5 @@
 
 - name: nim-waku
   src: git@github.com:status-im/infra-role-nim-waku.git
-  version: cfe424c01e01664db96a9f1314aa65294c6979e6
+  version: a66b80766b752800c0ffd13eabe5bd3e4931c020
   scm: git
