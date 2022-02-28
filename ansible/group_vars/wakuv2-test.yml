@@ -10,6 +10,7 @@ bootstrap__active_extra_users:
 nim_waku_cont_tag: 'deploy-v2-{{ stage }}'
 nim_waku_cont_name: 'nim-waku-v2'
 nim_waku_protocols_enabled: ['relay', 'store', 'filter', 'swap', 'lightpush']
+nim_waku_dns4_domain_name: '{{ dns_entry }}'
 
 # Ports
 nim_waku_p2p_tcp_port: 30303
