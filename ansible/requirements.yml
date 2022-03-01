@@ -31,5 +31,5 @@
 
 - name: nim-waku
   src: git@github.com:status-im/infra-role-nim-waku.git
-  version: 0229249c3ddc666aeb525f8b17777b6efb7df82e
+  version: cb2b857ba929cda4a5ba9859bd7de27adafdd16b
   scm: git
