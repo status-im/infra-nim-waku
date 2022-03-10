@@ -16,9 +16,10 @@
     - wakuv2-prod
   roles:
     - { role: open-ports, tags: open-ports }
-    - { role: swap-file,  tags: swap-file }
-    - { role: certbot,    tags: certbot }
-    - { role: nim-waku,   tags: nim-waku }
+    - { role: swap-file,  tags: swap-file  }
+    - { role: certbot,    tags: certbot    }
+    - { role: nim-waku,   tags: nim-waku   }
+    - { role: waku-peers, tags: waku-peers }
 
 - name: Setup chat2bridge
   hosts:
