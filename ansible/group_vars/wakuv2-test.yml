@@ -33,7 +33,6 @@ nim_waku_websocket_ssl_key: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain 
 
 # Enable rln-relay in Waku
 nim_waku_rln_relay_content_topic: '/toy-chat/2/luzhou/proto'
-nim_waku_rln_relay_enabled: true
 
 # Enable WebSockets via Websockify
 nim_waku_websockify_enabled: true
