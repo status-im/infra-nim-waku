@@ -32,7 +32,7 @@ nim_waku_websockify_ssl_dir: '{{ nim_waku_websocket_ssl_dir }}'
 nim_waku_websockify_ssl_cert: '{{ nim_waku_websocket_ssl_cert }}'
 nim_waku_websockify_ssl_key: '{{ nim_waku_websocket_ssl_key }}'
 
-# Enable waku rln-relay 
+# Waku rln-relay parameters
 nim_waku_rln_relay_content_topic: '/toy-chat/2/luzhou/proto'
 
 # Peer connecting
