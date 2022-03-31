@@ -9,7 +9,7 @@ bootstrap__active_extra_users:
 # Tag dependent on fleet: test, prod
 nim_waku_cont_tag: 'deploy-v2-{{ stage }}'
 nim_waku_cont_name: 'nim-waku-v2'
-nim_waku_protocols_enabled: ['relay', 'store', 'filter', 'swap', 'lightpush']
+nim_waku_protocols_enabled: ['relay', 'store', 'filter', 'swap', 'lightpush', 'rln-relay']
 nim_waku_dns4_domain_name: '{{ dns_entry }}'
 
 # Ports
@@ -30,6 +30,9 @@ nim_waku_websocket_domain: '{{ dns_entry }}'
 nim_waku_websocket_ssl_dir: '/etc/letsencrypt'
 nim_waku_websocket_ssl_cert: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/fullchain.pem'
 nim_waku_websocket_ssl_key: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/privkey.pem'
+
+# Waku rln-relay parameters
+nim_waku_rln_relay_content_topic: '/toy-chat/2/luzhou/proto'
 
 # Enable WebSockets via Websockify
 nim_waku_websockify_enabled: true
