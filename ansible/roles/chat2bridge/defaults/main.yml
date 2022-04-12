@@ -17,8 +17,8 @@ chat2bridge_node_key_file_path: '{{ chat2bridge_service_path }}/nodekey'
 chat2bridge_log_level: 'INFO'
 chat2bridge_public_address: '{{ ansible_host }}'
 # Ports
-chat2bridge_p2p_tcp_port: 9000
-chat2bridge_p2p_udp_port: 9000
+chat2bridge_p2p_tcp_port: 19000
+chat2bridge_p2p_udp_port: 19000
 chat2bridge_rpc_tcp_port: 8546
 chat2bridge_metrics_port: 9100
 
