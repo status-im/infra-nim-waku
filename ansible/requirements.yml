@@ -11,7 +11,7 @@
 
 - name: infra-role-bootstrap-linux
   src: git@github.com:status-im/infra-role-bootstrap-linux.git
-  version: 7280600c2c6cf532fdbbbb31481fdb068dd0573e
+  version: 9de1a4265c78d171d31385ae666d3abc99776f8c
   scm: git
 
 - name: infra-role-wireguard
@@ -31,7 +31,7 @@
 
 - name: nim-waku
   src: git@github.com:status-im/infra-role-nim-waku.git
-  version: 1494bda34a38be9bfba83ec53e5e06ca98a4b7bb
+  version: c59aaf4c4e50869b1b542dbbacc3b69e5db0f3d7
   scm: git
 
 - name: waku-peers
