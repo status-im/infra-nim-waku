@@ -24,4 +24,7 @@ module "hosts" {
     /* only on node-01.gc-us-central1-a.wakuv2.prod */
     "9000",  /* chat2bridge */
   ]
+  open_udp_ports = [
+    "9000",  /* discovery v5 */
+  ]
 }

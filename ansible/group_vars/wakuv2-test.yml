@@ -17,8 +17,9 @@ nim_waku_node_key: '{{lookup("bitwarden", "fleets/wakuv2/"+stage+"/nodekeys", fi
 # Ports
 nim_waku_p2p_tcp_port: 30303
 nim_waku_p2p_udp_port: 30303
-nim_waku_websock_port: 8000
 nim_waku_metrics_port: 8008
+nim_waku_disc_v5_port: 9000
+nim_waku_websock_port: 8000
 nim_waku_rpc_tcp_port: 8545
 
 # Limits
@@ -62,6 +63,7 @@ open_ports_default_protocol: 'tcp'
 open_ports_list:
   - { port: '{{ nim_waku_p2p_udp_port }}', protocol: 'udp' }
   - { port: '{{ nim_waku_p2p_tcp_port }}' }
+  - { port: '{{ nim_waku_disc_v5_port }}', protocol: 'udp' }
   - { port: '{{ nim_waku_websock_port }}' }
   - { port: '{{ nim_waku_websockify_cont_port }}' }
   - { port: '{{ nim_waku_websockify_cont_port }}' }
