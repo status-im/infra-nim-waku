@@ -28,7 +28,7 @@ nim_waku_p2p_max_connections: 150
 
 # SQLite store
 nim_waku_sqlite_store: true
-nim_waku_sqlite_retention_time: '30.days.seconds'
+nim_waku_sqlite_retention_time: 2592000
 
 # Enable websockets in Waku
 nim_waku_websocket_enabled: true
