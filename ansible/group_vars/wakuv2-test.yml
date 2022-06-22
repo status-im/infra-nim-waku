@@ -49,14 +49,14 @@ nim_waku_websockify_ssl_dir: '{{ nim_waku_websocket_ssl_dir }}'
 nim_waku_websockify_ssl_cert: '{{ nim_waku_websocket_ssl_cert }}'
 nim_waku_websockify_ssl_key: '{{ nim_waku_websocket_ssl_key }}'
 
-# Peer connecting
-nim_waku_connect_consul_service_names: ['{{ nim_waku_cont_name }}']
-nim_waku_connect_rpc_port: '{{ nim_waku_rpc_tcp_port }}'
-
 # Consul Service
 nim_waku_consul_success_before_passing: 5
 nim_waku_consul_failures_before_warning: 2
 nim_waku_consul_failures_before_critical: 20
+
+# Peer connecting
+waku_peers_consul_service_names: ['{{ nim_waku_cont_name }}']
+waku_peers_rpc_port: '{{ nim_waku_rpc_tcp_port }}'
 
 # LetsEncrypt via Certbot
 certbot_docker_enabled: true
