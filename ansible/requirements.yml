@@ -36,5 +36,5 @@
 
 - name: waku-peers
   src: git@github.com:status-im/infra-role-waku-peers.git
-  version: 895d6f076cf45cef959377961e55d7f62fa59f41
+  version: ab9b077abc3269bb34329af7031eb83fea7b8985
   scm: git
