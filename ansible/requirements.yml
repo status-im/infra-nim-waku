@@ -11,7 +11,7 @@
 
 - name: infra-role-bootstrap-linux
   src: git@github.com:status-im/infra-role-bootstrap-linux.git
-  version: f06a8b8fea18523c2f576e6b72aa5b37dce7d290
+  version: e7bc4c0145ca98d0bbb5e986fd9b1ebf98a4535c
   scm: git
 
 - name: infra-role-wireguard
@@ -36,5 +36,10 @@
 
 - name: waku-peers
   src: git@github.com:status-im/infra-role-waku-peers.git
-  version: ab9b077abc3269bb34329af7031eb83fea7b8985
+  version: 5dc2827771014a627a2a6c27adbcedeed9dfc64f
+  scm: git
+
+- name: systemd-timer
+  src: git@github.com:status-im/infra-role-systemd-timer.git
+  version: 4ad0a9bfb57fcc1c1e7322c2a2293e726edb98f7
   scm: git
