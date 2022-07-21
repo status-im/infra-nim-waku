@@ -30,6 +30,10 @@ nim_waku_p2p_max_connections: 150
 nim_waku_sqlite_store: true
 nim_waku_sqlite_retention_time: 2592000 # 30 days
 
+# DNS Discovery
+nim_waku_dns_disc_enabled: true
+nim_waku_dns_disc_url: 'enrtree://AOFTICU2XWDULNLZGRMQS4RIZPAZEHYMV4FYHAPW563HNRAOERP7C@test.waku.nodes.status.im'
+
 # Enable websockets in Waku
 nim_waku_websocket_enabled: true
 nim_waku_websocket_secure_enabled: true
