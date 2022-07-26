@@ -36,7 +36,7 @@
 
 - name: waku-peers
   src: git@github.com:status-im/infra-role-waku-peers.git
-  version: 5dc2827771014a627a2a6c27adbcedeed9dfc64f
+  version: be28c829684db5468c0b98e69bc2284ab72999a5
   scm: git
 
 - name: systemd-timer
