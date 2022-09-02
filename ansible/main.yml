@@ -20,9 +20,3 @@
     - { role: certbot,    tags: certbot    }
     - { role: nim-waku,   tags: nim-waku   }
     - { role: waku-peers, tags: waku-peers }
-
-- name: Setup chat2bridge
-  hosts:
-    - node-01.gc-us-central1-a.wakuv2.prod
-  roles:
-    - { role: chat2bridge,   tags: chat2bridge }
