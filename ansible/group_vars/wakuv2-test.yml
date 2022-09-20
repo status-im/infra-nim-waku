@@ -34,6 +34,9 @@ nim_waku_sqlite_retention_time: 2592000 # 30 days
 nim_waku_dns_disc_enabled: true
 nim_waku_dns_disc_url: 'enrtree://AOFTICU2XWDULNLZGRMQS4RIZPAZEHYMV4FYHAPW563HNRAOERP7C@test.waku.nodes.status.im'
 
+# Ethereum client address
+nim_waku_eth_client_address: 'http://linux-01.he-eu-hel1.nimbus.prater.wg:8546'
+
 # Enable websockets in Waku
 nim_waku_websocket_enabled: true
 nim_waku_websocket_secure_enabled: true
