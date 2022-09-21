@@ -32,7 +32,7 @@ nim_waku_sqlite_retention_time: 2592000 # 30 days
 
 # DNS Discovery
 nim_waku_dns_disc_enabled: true
-nim_waku_dns_disc_url: 'enrtree://AOFTICU2XWDULNLZGRMQS4RIZPAZEHYMV4FYHAPW563HNRAOERP7C@test.waku.nodes.status.im'
+nim_waku_dns_disc_url: 'enrtree://AOGECG2SPND25EEFMAJ5WF3KSGJNSGV356DSTL2YVLLZWIV6SAYBM@test.waku.nodes.status.im'
 
 # Ethereum client address
 nim_waku_eth_client_address: 'ws://linux-01.he-eu-hel1.nimbus.prater.wg:9547'

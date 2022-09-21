@@ -29,7 +29,7 @@ nim_waku_sqlite_retention_time: 2592000 # 30 days
 
 # DNS Discovery
 nim_waku_dns_disc_enabled: true
-nim_waku_dns_disc_url: 'enrtree://ANTL4SLG2COUILKAPE7EF2BYNL2SHSHVCHLRD5J7ZJLN5R3PRJD2Y@prod.waku.nodes.status.im'
+nim_waku_dns_disc_url: 'enrtree://AOGECG2SPND25EEFMAJ5WF3KSGJNSGV356DSTL2YVLLZWIV6SAYBM@prod.waku.nodes.status.im'
 
 # Enable websockets in Waku
 nim_waku_websocket_enabled: true
