@@ -35,7 +35,7 @@ nim_waku_dns_disc_enabled: true
 nim_waku_dns_disc_url: 'enrtree://AOFTICU2XWDULNLZGRMQS4RIZPAZEHYMV4FYHAPW563HNRAOERP7C@test.waku.nodes.status.im'
 
 # Ethereum client address
-nim_waku_eth_client_address: 'http://linux-01.he-eu-hel1.nimbus.prater.wg:8546'
+nim_waku_eth_client_address: 'ws://linux-01.he-eu-hel1.nimbus.prater.wg:9547'
 
 # Enable websockets in Waku
 nim_waku_websocket_enabled: true
