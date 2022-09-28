@@ -8,7 +8,7 @@ bootstrap__active_extra_users:
   - { name: daniel,  uid: 8005, groups: ['docker', 'dockremap'], key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOPJlQ9iYVD2SNuW2ob2nvNHs+/O9PbcPc+dIepHNHO0 danielkaiser@status.im' }
 
 # Tag dependent on fleet: test, prod
-nim_waku_cont_tag: 'deploy-v2-{{ stage }}'
+nim_waku_cont_tag: 'deploy-wakuv2-{{ stage }}'
 nim_waku_cont_name: 'nim-waku-v2'
 nim_waku_protocols_enabled: ['relay', 'store', 'filter', 'swap', 'lightpush', 'rln-relay']
 nim_waku_disc_v5_enabled: true
