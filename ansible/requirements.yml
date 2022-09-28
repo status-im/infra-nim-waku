@@ -21,7 +21,7 @@
 
 - name: consul-service
   src: git@github.com:status-im/infra-role-consul-service.git
-  version: 7653d06cfc4d2613ee14bf637d38d98b0201864f
+  version: 4849a3c9d7f2045669880e4e17eeb71980b2e4d0
   scm: git
 
 - name: certbot
