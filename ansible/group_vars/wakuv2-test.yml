@@ -34,9 +34,6 @@ nim_waku_sqlite_retention_time: 2592000 # 30 days
 nim_waku_dns_disc_enabled: true
 nim_waku_dns_disc_url: 'enrtree://AOGECG2SPND25EEFMAJ5WF3KSGJNSGV356DSTL2YVLLZWIV6SAYBM@test.waku.nodes.status.im'
 
-# Ethereum client address
-nim_waku_eth_client_address: 'ws://linux-01.he-eu-hel1.nimbus.prater.wg:9547'
-
 # Enable websockets in Waku
 nim_waku_websocket_enabled: true
 nim_waku_websocket_secure_enabled: true
@@ -50,7 +47,7 @@ nim_waku_rln_relay_content_topic: '/toy-chat/2/luzhou/proto'
 nim_waku_rln_relay_dynamic: true
 nim_waku_rln_relay_eth_account_address: '0000000000000000000000000000000000000000'
 nim_waku_rln_relay_eth_contract_address: '0x4252105670fE33D2947e8EaD304969849E64f2a6'
-nim_waku_rln_relay_eth_client_address: '{{ nim_waku_eth_client_address }}'
+nim_waku_rln_relay_eth_client_address: 'ws://linux-01.he-eu-hel1.nimbus.prater.wg:9547'
 
 # Enable WebSockets via Websockify
 nim_waku_websockify_enabled: true
