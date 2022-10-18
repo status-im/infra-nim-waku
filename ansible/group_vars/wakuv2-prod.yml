@@ -6,6 +6,7 @@ bootstrap__active_extra_users:
 # Tag dependent on fleet: test, prod
 nim_waku_cont_tag: 'deploy-wakuv2-{{ stage }}'
 nim_waku_cont_name: 'nim-waku-v2'
+nim_waku_log_level: 'debug'
 nim_waku_protocols_enabled: ['relay', 'store', 'filter', 'lightpush']
 nim_waku_disc_v5_enabled: true
 nim_waku_dns4_domain_name: '{{ dns_entry }}'
