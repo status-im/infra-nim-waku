@@ -25,7 +25,7 @@ nim_waku_rpc_tcp_addr: 0.0.0.0
 nim_waku_p2p_max_connections: 150
 
 # SQLite store
-nim_waku_sqlite_store: false
+nim_waku_sqlite_store: true
 nim_waku_sqlite_retention_time: 2592000 # 30 days
 
 # DNS Discovery
