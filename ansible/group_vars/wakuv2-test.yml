@@ -16,6 +16,9 @@ nim_waku_disc_v5_enabled: true
 nim_waku_dns4_domain_name: '{{ dns_entry }}'
 nim_waku_node_key: '{{lookup("bitwarden", "fleets/wakuv2/"+stage+"/nodekeys", field=hostname)}}'
 
+# Topic configuration
+nim_waku_topics: ['/waku/2/default-waku/proto', '/waku/2/dev-waku/proto']
+
 # Ports
 nim_waku_p2p_tcp_port: 30303
 nim_waku_p2p_udp_port: 30303
