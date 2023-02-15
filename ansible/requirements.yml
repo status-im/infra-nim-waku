@@ -22,12 +22,12 @@
 
 - name: certbot
   src: git@github.com:status-im/infra-role-certbot.git
-  version: a0f3dc76f2f07ed6857312da1f559db52f9781a1
+  version: cf44a33b3e446073d0112bb43f192f828d89ab34
   scm: git
 
 - name: nim-waku
   src: git@github.com:status-im/infra-role-nim-waku.git
-  version: af90c66627a76c5b6a08a6c13e961ea00a3b0671
+  version: a93a85b36a1a411e5dd8f469a41047ab29ad4090
   scm: git
 
 - name: waku-peers
@@ -37,5 +37,5 @@
 
 - name: systemd-timer
   src: git@github.com:status-im/infra-role-systemd-timer.git
-  version: 0cc94695f3dada39213a87fbe923cd90e2a7d2c2
+  version: 24b9f3c82b0f2cc89211e40b0abce07e983e67c1
   scm: git
