@@ -17,7 +17,7 @@
 
 - name: consul-service
   src: git@github.com:status-im/infra-role-consul-service.git
-  version: 4849a3c9d7f2045669880e4e17eeb71980b2e4d0
+  version: 4d7c9c606f5e039a22c34ba93961d05056c0e002
   scm: git
 
 - name: certbot
@@ -27,7 +27,7 @@
 
 - name: nim-waku
   src: git@github.com:status-im/infra-role-nim-waku.git
-  version: a93a85b36a1a411e5dd8f469a41047ab29ad4090
+  version: bd220d24b32e082286864bfca951581cdfe10787
   scm: git
 
 - name: waku-peers
