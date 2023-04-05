@@ -18,13 +18,15 @@ locals {
       ac_type = "ecs.t5-lc1m2.small" /* Alibaba Cloud */
       gc_type = "g1-small"           /* Google Cloud */
 
+      data_vol_size = 0
+
       dns_records = []
     }
 
     # Inherits defaults.
     v1   = { stage = "test", env = "wakuv1" }
-    test = { }
-    prod = { }
+    test = { data_vol_size = 40 }
+    prod = { data_vol_size = 40 }
   }
 }
 

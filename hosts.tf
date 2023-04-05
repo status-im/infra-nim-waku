@@ -15,6 +15,11 @@ module "hosts" {
   ac_type = local.ws["ac_type"] /* Alibaba Cloud */
   gc_type = local.ws["gc_type"] /* Google Cloud */
 
+  /* data volumes */
+  ac_data_vol_size = local.ws["data_vol_size"]
+  do_data_vol_size = local.ws["data_vol_size"]
+  gc_data_vol_size = local.ws["data_vol_size"]
+
   /* firewall */
   open_tcp_ports = [
     "80",    /* certbot */
