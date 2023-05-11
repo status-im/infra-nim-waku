@@ -38,6 +38,9 @@ nim_waku_store_message_retention_policy: 'time:2592000' # 30 days
 nim_waku_dns_disc_enabled: true
 nim_waku_dns_disc_url: 'enrtree://AOGECG2SPND25EEFMAJ5WF3KSGJNSGV356DSTL2YVLLZWIV6SAYBM@test.waku.nodes.status.im'
 
+# Enable WebSockets via Websockify
+nim_waku_websockify_enabled: false
+
 # Enable websockets in Waku
 nim_waku_websocket_enabled: true
 nim_waku_websocket_secure_enabled: true
@@ -52,14 +55,6 @@ nim_waku_rln_relay_dynamic: true
 nim_waku_rln_relay_eth_account_address: '0000000000000000000000000000000000000000'
 nim_waku_rln_relay_eth_contract_address: '0x4252105670fE33D2947e8EaD304969849E64f2a6'
 nim_waku_rln_relay_eth_client_address: 'ws://linux-01.he-eu-hel1.nimbus.prater.wg:9547'
-
-# Enable WebSockets via Websockify
-nim_waku_websockify_enabled: true
-nim_waku_websockify_cont_port: 443
-nim_waku_websockify_domain: '{{ nim_waku_websocket_domain }}'
-nim_waku_websockify_ssl_dir: '{{ nim_waku_websocket_ssl_dir }}'
-nim_waku_websockify_ssl_cert: '{{ nim_waku_websocket_ssl_cert }}'
-nim_waku_websockify_ssl_key: '{{ nim_waku_websocket_ssl_key }}'
 
 # Consul Service
 nim_waku_consul_success_before_passing: 5
@@ -89,7 +84,5 @@ open_ports_list:
   - { port: '{{ nim_waku_p2p_tcp_port }}' }
   - { port: '{{ nim_waku_disc_v5_port }}', protocol: 'udp' }
   - { port: '{{ nim_waku_websock_port }}' }
-  - { port: '{{ nim_waku_websockify_cont_port }}' }
-  - { port: '{{ nim_waku_websockify_cont_port }}' }
   - { port: '80', comment: 'Certbot verification' }
   - { port: '{{ nim_waku_metrics_port }}', chain: 'VPN', ipset: 'metrics.hq' }
