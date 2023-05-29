@@ -2,15 +2,15 @@
 
 This repo defines infrastructure for running Waku nodes implemented in Nim.
 
-Source: https://github.com/status-im/nim-waku
+Source: https://github.com/waku-org/nwaku
 
 # Continuous Integration
 
 Jenkins CI builds can be used to build and deploy new Docker images:
 
-* `wakuv1.test` - https://ci.status.im/job/nim-waku/job/deploy-v1-test/
-* `wakuv2.test` - https://ci.status.im/job/nim-waku/job/deploy-v2-test/
-* `wakuv2.prod` - https://ci.status.im/job/nim-waku/job/deploy-v2-prod/
+* `wakuv1.test` - https://ci.infra.status.im/job/nim-waku/job/deploy-v1-test/
+* `wakuv2.test` - https://ci.infra.status.im/job/nim-waku/job/deploy-v2-test/
+* `wakuv2.prod` - https://ci.infra.status.im/job/nim-waku/job/deploy-v2-prod/
 
 # Repo Usage
 

@@ -1,6 +1,6 @@
 # Description
 
-This role configures a [`chat2bridge`](https://github.com/status-im/infra-nim-waku/commit/0532dbd7) node which communicates with [MatterBridge](https://github.com/42wim/matterbridge) instance which expoes it's [API](https://github.com/42wim/matterbridge/wiki/API) in order to bridge Waku v2 channels with other chat services like Discord.
+This role configures a [`chat2bridge`](https://github.com/status-im/infra-wakuv2/commit/0532dbd7) node which communicates with [MatterBridge](https://github.com/42wim/matterbridge) instance which expoes it's [API](https://github.com/42wim/matterbridge/wiki/API) in order to bridge Waku v2 channels with other chat services like Discord.
 # Configuration
 
 ```yaml
