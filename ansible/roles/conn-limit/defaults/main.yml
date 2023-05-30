@@ -1,0 +1,22 @@
+---
+conn_limit_comment: 'conn-limit'
+conn_limit_chain: 'SERVICES'
+conn_limit_jump: 'REJECT'
+conn_limit_reject_with: 'tcp-reset'
+conn_limit_protocol: tcp
+conn_limit_mask: 32
+#conn_limit_dport: 12345
+#conn_limit_limit: 100
+
+conn_limit_flags: >-
+  -p '{{ conn_limit_protocol }}'
+  -m '{{ conn_limit_protocol }}'
+  --dport '{{ conn_limit_dport }}'
+  -m connlimit
+  --connlimit-above='{{ conn_limit_limit }}'
+  --connlimit-mask='{{ conn_limit_mask }}'
+  --connlimit-saddr
+  -m comment
+  --comment '{{ conn_limit_comment }}'
+  -j '{{ conn_limit_jump }}'
+  --reject-with '{{ conn_limit_reject_with }}'

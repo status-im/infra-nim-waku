@@ -1,0 +1,5 @@
+---
+- name: Create connection limiting firewall rule
+  shell: >-
+    iptables -C '{{ conn_limit_chain }}' {{ conn_limit_flags }} ||
+    iptables -I '{{ conn_limit_chain }}' {{ conn_limit_flags }}
