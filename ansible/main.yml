@@ -16,6 +16,7 @@
     - wakuv2-prod
   roles:
     - { role: open-ports, tags: open-ports }
+    - { role: conn-limit, tags: conn-limit }
     - { role: swap-file,  tags: swap-file  }
     - { role: certbot,    tags: certbot    }
     - { role: nim-waku,   tags: nim-waku   }

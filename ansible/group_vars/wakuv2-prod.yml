@@ -68,6 +68,11 @@ certbot_admin_email: 'devops@status.im'
 certbot_certs:
   - domains: [ '{{ nim_waku_websockify_domain }}' ]
 
+# Connection limits
+conn_limit_comment: 'WebSocket conn limit'
+conn_limit_limit: 20
+conn_limit_dport: '{{ nim_waku_websock_port }}'
+
 # Open LibP2P Ports
 open_ports_default_comment: '{{ nim_waku_cont_name }}'
 open_ports_default_chain: 'SERVICES'
