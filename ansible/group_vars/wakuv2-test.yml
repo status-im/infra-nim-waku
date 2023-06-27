@@ -54,6 +54,7 @@ nim_waku_rln_relay_content_topic: '/toy-chat/3/mingde/proto'
 nim_waku_rln_relay_dynamic: true
 nim_waku_rln_relay_eth_contract_address: '0x9C09146844C1326c2dBC41c451766C7138F88155'
 nim_waku_rln_relay_eth_client_address: 'ws://linux-01.ih-eu-mda1.nimbus.sepolia.wg:9557'
+nim_waku_rln_relay_tree_path: '/data/rln_relay_tree'
 
 # Consul Service
 nim_waku_consul_success_before_passing: 5
