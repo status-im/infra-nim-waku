@@ -7,6 +7,8 @@ bootstrap__active_extra_users:
   - { name: anthony, uid: 8004, groups: ['docker', 'dockremap'], key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDYM50p0dQDL2uZFtAHrpdf5sBLTrTLMZGABZosO2GTMu67GnvYeBn/L42hehhVX6yNDU4KOhZVWjLLI4Ekdex3dKf7ynLCSC1jVkR1k7YgVvVAwXCEk38MMe1LqUJmb2K0rRzlIn0LNThWawahAhGNLNU55nJR0X3MhvL7G3UnqGY1ubTABQGFkRPIlC0smuVFyRPmpLF2pGMNTyCkFpqAP7qu+wW3PguxDZRUpgjsM/iZtaHh1a8z7ikPGWhkvJkx/U0KtYuhoMbBPR/3Ta6ttDNXs8z/cOvc5cB6fBa9Y1IapfXCC8r88WsIkaN9F+7fTLdhN7+RJvHgUrxNzhLOPzvGd4KmHvE22goCrO9yZbxzxlRhZf6zgu27waU2CQhCDYXTASUcWzJgfSocxPCYPHYFeDFj9Vj8NqyAFSqEnXCFcz/nuzBAgKyEmwcbg+6uz6UfC7Fygz5f8xKerggP2tuwasEwHZkFsicc/NQZknWFkjvwT9sOqHrAmFlRYXbR8CzcsLHDMN/t5j333Akso0AuOVA2n8LvhEUmfrOI2Z9KM9Vd7uZdDXYtdYpRgUgFJCfw7KH3/cskJ8s9HH8AxbQ2KkjNB+Dv4ZWGthAkiLRbu/uxunHVjorkYZeJ76JuY5AxOd1OYvl2LTA/lxs4vEd2FVvw4AuBH+RImofd4w== anthony@status.im' }
   - { name: daniel,  uid: 8005, groups: ['docker', 'dockremap'], key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOPJlQ9iYVD2SNuW2ob2nvNHs+/O9PbcPc+dIepHNHO0 danielkaiser@status.im' }
   - { name: ivan,    uid: 8006, groups: ['docker', 'dockremap'], key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJBdm8y1PfWjT1pioaWJSZ2ETrUySb+dS/ifDg+VIpLY ivansete@status.im' }
+  - { name: sp,      uid: 8007, groups: ['docker', 'dockremap'], key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDE5yeuJ/okJSCHJOnH9QK0UjeO6UImwqk369sezfVY5p9402zSV7ih7CpBlt1tixUyL9tbI+iWokwdU6MAOVbvmwiV6smVtZ4/BAlx2NqKVOC2LK02hlBTLXxH6McbRMBlUx0FgLMrXp3r89EgHQzty4kSFTeHkT4xcMKKOK3BBQx1ntQqaFAKv2DFy3ATLw4XayuLVGafzDgOVx/cocsAfcTE29uW5zJzpMRMxEIbZCxb2kGARA5YOuALNXDWtY0JK46HbFtdbig2aXnP75Vc4TaXWjdf7QJrFwh/r2uJHXbZdiCbdVuU1KI4p7jAt9Y8LWxEdVhTVYHctJU6IPrJ sim.vivier@hotmail.com' }
+
 
 # Tag dependent on fleet: test, prod
 nim_waku_cont_tag: 'deploy-wakuv2-{{ stage }}'
