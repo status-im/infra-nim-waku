@@ -2,6 +2,7 @@
 # Custom SSH accounts for Nimbus fleet, should start from UID 8000.
 bootstrap__active_extra_users:
   - { name: hanno,   uid: 8003, admin: true, key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDDlvmNGKxoddAmOuXvjm0II0M82aLjczb8F1ZTSV7zyvKaw6DNuaN6c6ZCdUvdjfF4hdEwMXNB37Cr5oysPo41rIuii+RVPd+c2WLZnC/MCg8d6b0/mREIfpuEMlz+u4lyr8/DST7zO4Ke95w5kVGtlh2kR88F9mlJlkyq2NCiqBU/blKObOjqS8OMRuMJ0GpwzF9+/dfXVahzdgHgKS0Q1ATvLHL0DvZSAGwHfHcIV5nF0ddRCofX4L2shIImZk5dAsATQTkT2gNWObhF6KuWbVyuhsLfRletzdnf8jUYm9Uatf7Woa9CxbPjdGxVxniZblmOumcaCNgaioKs0qeZzwNQmgJ/PXXw9uVWhDUYvNh7Cz+SNTVm4WG1tEk3WO9EU5dcCTgfEa94LUl5G+yXYX8H00spubpiWXv/0RjEQX4CZeu0pff209GLDWdpIaV8p9QVFBr8X8t8jw5zw5j/PxkprcT5P2A1t+WOUn9LrBzOJ1iAU3oJV3ZMYQhUS78= hanno@status.im' }
+  - { name: ivan,    uid: 8006, groups: ['docker', 'dockremap'], key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJBdm8y1PfWjT1pioaWJSZ2ETrUySb+dS/ifDg+VIpLY ivansete@status.im' }
 
 # Tag dependent on fleet: test, prod
 nim_waku_cont_tag: 'deploy-wakuv2-{{ stage }}'
