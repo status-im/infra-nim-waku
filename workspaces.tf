@@ -11,9 +11,6 @@ locals {
     defaults = {
       hosts_count = 1 /* number of hosts in each DC */
 
-      env   = "wakuv2" /* Because we used to have wakuv1 */
-      stage = terraform.workspace
-
       do_type = "s-1vcpu-2gb"        /* DigitalOcean */
       ac_type = "ecs.t5-lc1m2.small" /* Alibaba Cloud */
       gc_type = "g1-small"           /* Google Cloud */
@@ -24,7 +21,6 @@ locals {
     }
 
     # Inherits defaults.
-    v1   = { stage = "test", env = "wakuv1" }
     test = { data_vol_size = 40 }
     prod = { data_vol_size = 40 }
   }

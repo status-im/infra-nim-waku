@@ -2,9 +2,9 @@ module "hosts" {
   source = "github.com/status-im/infra-tf-multi-provider"
 
   /* node type */
-  env    = local.ws.env
-  stage  = local.ws.stage
-  group  = "${local.ws.env}-${local.ws.stage}"
+  env    = "wakuv2"
+  stage  = terraform.workspace
+  group  = "${local.ws.env}-${terraform.workspace}"
   domain = var.domain
 
   /* scaling */
