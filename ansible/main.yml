@@ -14,6 +14,7 @@
     - wakuv2-test
     - wakuv2-shards
     - wakuv2-prod
+    - wakuv2-auto
   roles:
     - { role: open-ports, tags: open-ports }
     - { role: swap-file,  tags: swap-file  }

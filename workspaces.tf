@@ -24,6 +24,7 @@ locals {
     test   = { data_vol_size = 40 }
     shards = { data_vol_size = 40 }
     prod   = { data_vol_size = 40 }
+    auto   = { data_vol_size = 40 }
   }
 }
 
