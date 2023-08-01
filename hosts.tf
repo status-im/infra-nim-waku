@@ -4,7 +4,7 @@ module "hosts" {
   /* node type */
   env    = "wakuv2"
   stage  = terraform.workspace
-  group  = "${local.ws.env}-${terraform.workspace}"
+  group  = "wakuv2-${terraform.workspace}"
   domain = var.domain
 
   /* scaling */
