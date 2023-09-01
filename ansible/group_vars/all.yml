@@ -11,6 +11,8 @@ bootstrap__consul_certs_client_key: '{{lookup("bitwarden", "consul/certs",      
 bootstrap__sshguard_whitelist_extra: ['{{lookup("bitwarden", "sshguard/whitelist", field="jakubgs-home")}}']
 # Wireguard
 wireguard_consul_acl_token: '{{lookup("bitwarden", "consul/acl-tokens", field="wireguard")}}'
+# System packages
+bootstrap__extra_packages: ['sqlite3']
 
 # general container config
 cont_state: started
