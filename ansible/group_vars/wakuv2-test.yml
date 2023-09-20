@@ -61,6 +61,7 @@ nim_waku_consul_failures_before_warning: 2
 nim_waku_consul_failures_before_critical: 20
 
 # Peer connecting
+waku_peers_timer_enabled: false
 waku_peers_rpc_port: '{{ nim_waku_rpc_tcp_port }}'
 waku_peers_rpc_timeout: 20
 waku_peers_rpc_retries: 5
