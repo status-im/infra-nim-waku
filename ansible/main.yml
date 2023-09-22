@@ -20,4 +20,3 @@
     - { role: conn-limit, tags: conn-limit, when: 'stage != "shards"' }
     - { role: certbot,    tags: certbot,    when: 'stage != "shards"' }
     - { role: nim-waku,   tags: nim-waku   }
-    - { role: waku-peers, tags: waku-peers }
