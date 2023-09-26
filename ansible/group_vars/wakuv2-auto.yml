@@ -11,14 +11,21 @@ bootstrap__active_extra_users:
 nim_waku_cont_tag: 'deploy-wakuv2-{{ stage }}'
 nim_waku_cont_name: 'nim-waku-v2'
 nim_waku_log_level: 'debug'
-nim_waku_protocols_enabled: ['relay', 'store', 'filter', 'lightpush', 'peer-exchange']
+nim_waku_protocols_enabled: ['relay', 'filter', 'lightpush', 'peer-exchange']
 nim_waku_disc_v5_enabled: true
 nim_waku_dns4_domain_name: '{{ dns_entry }}'
 nim_waku_node_key: '{{lookup("bitwarden", "fleets/wakuv2/"+stage+"/nodekeys", field=hostname)}}'
 
-# Topic configuration
-# TODO use new content topic config options.
-#nim_waku_topics: []
+# Subscribe to all shards
+nim_waku_pubsub_topics:
+  - '/waku/2/rs/1/0'
+  - '/waku/2/rs/1/1'
+  - '/waku/2/rs/1/2'
+  - '/waku/2/rs/1/3'
+  - '/waku/2/rs/1/4'
+  - '/waku/2/rs/1/5'
+  - '/waku/2/rs/1/6'
+  - '/waku/2/rs/1/7'
 
 # Ports
 nim_waku_p2p_tcp_port: 30303
@@ -36,24 +43,42 @@ nim_waku_store_message_retention_policy: 'time:2592000' # 30 days
 
 # DNS Discovery
 nim_waku_dns_disc_enabled: false
+#nim_waku_dns_disc_url: TODO launch the fleet with DNS disc disabled, construct and publish the tree and then update config
 
 # Enable WebSockets via Websockify
 nim_waku_websockify_enabled: false
 
 # Enable websockets in Waku
-nim_waku_websocket_enabled: false
+# Could run into the issue of overflowing ENR might have to disable this.
+nim_waku_websocket_enabled: true 
+nim_waku_websocket_secure_enabled: true
+nim_waku_websocket_domain: '{{ dns_entry }}'
+nim_waku_websocket_ssl_dir: '/etc/letsencrypt'
+nim_waku_websocket_ssl_cert: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/fullchain.pem'
+nim_waku_websocket_ssl_key: '/etc/letsencrypt/live/{{ nim_waku_websocket_domain }}/privkey.pem'
+
+# Waku rln-relay parameters
+nim_waku_rln_relay_dynamic: true
+nim_waku_rln_relay_eth_contract_address: '0xF471d71E9b1455bBF4b85d475afb9BB0954A29c4'
+nim_waku_rln_relay_eth_client_address: 'ws://linux-01.ih-eu-mda1.nimbus.sepolia.wg:9557'
+nim_waku_rln_relay_tree_path: '/data/rln_relay_tree'
 
 # Consul Service
 nim_waku_consul_success_before_passing: 5
 nim_waku_consul_failures_before_warning: 2
 nim_waku_consul_failures_before_critical: 20
 
-# Peer connecting
-waku_peers_rpc_port: '{{ nim_waku_rpc_tcp_port }}'
-waku_peers_rpc_timeout: 20
-waku_peers_rpc_retries: 5
-waku_peers_consul_services:
-  - { name: '{{ nim_waku_cont_name }}', env: '{{ env }}',  stage: '{{ stage }}' }
+# LetsEncrypt via Certbot
+certbot_docker_enabled: true
+certbot_admin_email: 'devops@status.im'
+certbot_containers_to_stop: ['{{ nim_waku_cont_name }}']
+certbot_certs:
+  - domains: [ '{{ nim_waku_websockify_domain }}' ]
+
+# Connection limits
+conn_limit_comment: 'WebSocket conn limit'
+conn_limit_limit: 20
+conn_limit_dport: '{{ nim_waku_websock_port }}'
 
 # Open LibP2P Ports
 open_ports_default_comment: '{{ nim_waku_cont_name }}'
@@ -63,4 +88,6 @@ open_ports_list:
   - { port: '{{ nim_waku_p2p_udp_port }}', protocol: 'udp' }
   - { port: '{{ nim_waku_p2p_tcp_port }}' }
   - { port: '{{ nim_waku_disc_v5_port }}', protocol: 'udp' }
+  - { port: '{{ nim_waku_websock_port }}' }
+  - { port: '80', comment: 'Certbot verification' }
   - { port: '{{ nim_waku_metrics_port }}', chain: 'VPN', ipset: 'metrics.hq' }
