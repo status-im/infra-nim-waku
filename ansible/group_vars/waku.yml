@@ -8,13 +8,13 @@ bootstrap__active_extra_users:
   - { name: ivan,    uid: 8006, groups: ['docker', 'dockremap'], key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJBdm8y1PfWjT1pioaWJSZ2ETrUySb+dS/ifDg+VIpLY ivansete@status.im' }
 
 # Tag dependent on fleet: test, prod, shards, auto
-nim_waku_cont_tag: 'deploy-wakuv2-{{ stage }}'
-nim_waku_cont_name: 'nim-waku-v2'
+nim_waku_cont_tag: 'deploy-waku-{{ stage }}'
+nim_waku_cont_name: 'nim-waku'
 nim_waku_log_level: 'debug'
 nim_waku_protocols_enabled: ['relay', 'filter', 'lightpush', 'peer-exchange']
 nim_waku_disc_v5_enabled: true
 nim_waku_dns4_domain_name: '{{ dns_entry }}'
-nim_waku_node_key: '{{lookup("bitwarden", "fleets/wakuv2/"+stage+"/nodekeys", field=hostname)}}'
+nim_waku_node_key: '{{lookup("bitwarden", "fleets/waku/"+stage+"/nodekeys", field=hostname)}}'
 
 # Subscribe to all shards
 nim_waku_pubsub_topics:

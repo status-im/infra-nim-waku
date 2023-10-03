@@ -11,13 +11,11 @@
 
 - name: Configure Waku Nodes
   hosts:
-    - wakuv2-test
-    - wakuv2-shards
-    - wakuv2-prod
+    - waku
   roles:
     - { role: open-ports, tags: open-ports }
     - { role: swap-file,  tags: swap-file  }
-    - { role: conn-limit, tags: conn-limit, when: 'stage != "shards"' }
-    - { role: certbot,    tags: certbot,    when: 'stage != "shards"' }
+    - { role: conn-limit, tags: conn-limit }
+    - { role: certbot,    tags: certbot    }
     - { role: nim-waku,   tags: nim-waku   }
     - { role: waku-peers, tags: waku-peers }
