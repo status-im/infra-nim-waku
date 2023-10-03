@@ -21,9 +21,8 @@ locals {
     }
 
     # Inherits defaults.
-    test   = { data_vol_size = 40 }
-    shards = { data_vol_size = 40 }
-    prod   = { data_vol_size = 40 }
+    test = { data_vol_size = 40 }
+    prod = { data_vol_size = 40 }
   }
 }
 
