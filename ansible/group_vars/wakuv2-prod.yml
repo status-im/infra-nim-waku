@@ -29,7 +29,7 @@ nim_waku_rpc_tcp_addr: 0.0.0.0
 nim_waku_p2p_max_connections: 300
 
 # Store
-nim_waku_store_message_retention_policy: 'time:2592000' # 30 days
+nim_waku_store_message_retention_policy: 'size:25GB' # 25GB of data
 
 # DNS Discovery
 nim_waku_dns_disc_enabled: true
