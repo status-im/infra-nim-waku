@@ -27,7 +27,7 @@
 
 - name: nim-waku
   src: git@github.com:status-im/infra-role-nim-waku.git
-  version: 2860f5c720ae5803bc1838eb58da37969d8d8b90
+  version: 091c9faacb507227ea0c9a350fb2af34c2a19b3e
   scm: git
 
 - name: systemd-timer
