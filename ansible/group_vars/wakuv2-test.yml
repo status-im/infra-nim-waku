@@ -29,6 +29,8 @@ nim_waku_rpc_tcp_port: 8545
 
 # Limits
 nim_waku_p2p_max_connections: 300
+nim_waku_ip_colocation_limit: 2
+nim waku_max_msg_size: 'size:1MiB'
 
 # Store
 nim_waku_store_message_retention_policy: 'size:15GB' # 25GB of data
