@@ -5,7 +5,6 @@ module "hosts" {
   env    = "wakuv2"
   stage  = terraform.workspace
   group  = "wakuv2-${terraform.workspace}"
-  domain = var.domain
 
   /* scaling */
   host_count = local.ws["hosts_count"]
