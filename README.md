@@ -8,7 +8,6 @@ Source: https://github.com/waku-org/nwaku
 
 Jenkins CI builds can be used to build and deploy new Docker images:
 
-* `wakuv2.test` - https://ci.infra.status.im/job/nim-waku/job/deploy-v2-test/
 * `wakuv2.prod` - https://ci.infra.status.im/job/nim-waku/job/deploy-v2-prod/
 
 # Repo Usage

@@ -10,9 +10,7 @@
       changed_when: false
 
 - name: Configure Waku Nodes
-  hosts:
-    - wakuv2-test
-    - wakuv2-prod
+  hosts: wakuv2-prod
   roles:
     - { role: infra-role-open-ports, tags: open-ports }
     - { role: conn-limit,            tags: conn-limit }
