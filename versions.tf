@@ -4,7 +4,7 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = " = 3.26.0"
+      version = " = 4.26.0"
     }
     pass = {
       source  = "camptocamp/pass"
@@ -12,12 +12,6 @@ terraform {
     }
     digitalocean = {
       source = "digitalocean/digitalocean"
-    }
-    alicloud = {
-      source = "aliyun/alicloud"
-    }
-    google = {
-      source = "hashicorp/google"
     }
   }
 }

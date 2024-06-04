@@ -1,5 +1,5 @@
 module "hosts" {
-  source = "github.com/status-im/infra-tf-multi-provider"
+  source = "github.com/status-im/infra-tf-digital-ocean"
 
   /* node type */
   env    = "wakuv2"
@@ -7,17 +7,9 @@ module "hosts" {
   group  = "wakuv2-${terraform.workspace}"
 
   /* scaling */
-  host_count = local.ws["hosts_count"]
-
-  /* instance sizes */
-  do_type = local.ws["do_type"] /* DigitalOcean */
-  ac_type = local.ws["ac_type"] /* Alibaba Cloud */
-  gc_type = local.ws["gc_type"] /* Google Cloud */
-
-  /* data volumes */
-  ac_data_vol_size = local.ws["data_vol_size"]
-  do_data_vol_size = local.ws["data_vol_size"]
-  gc_data_vol_size = local.ws["data_vol_size"]
+  host_count    = 1
+  type          = "s-1vcpu-2gb"
+  data_vol_size = 40
 
   /* firewall */
   open_tcp_ports = [
