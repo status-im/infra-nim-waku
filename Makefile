@@ -16,16 +16,19 @@ PROVISIONER_ARCHIVE = $(PROVISIONER_NAME)-$(subst _,-,$(ARCH))_$(PROVISIONER_VER
 PROVISIONER_URL = https://github.com/radekg/terraform-provisioner-ansible/releases/download/$(PROVISIONER_VERSION)/$(PROVISIONER_ARCHIVE)
 PROVISIONER_PATH = $(TF_PLUGINS_DIR)/$(ARCH)/$(PROVISIONER_NAME)_$(PROVISIONER_VERSION)
 
-all: requirements install-provisioner secrets init-terraform
+all: roles-install install-provisioner secrets init-terraform
 	@echo "Success!"
 
-requirements-install:
-	ansible-galaxy install --keep-scm-meta --ignore-errors --force -r ansible/requirements.yml
+roles-install:
+	ansible/roles.py --install
 
-requirements-check:
-	ansible/versioncheck.py
+roles-check:
+	ansible/roles.py --check
 
-requirements: requirements-install requirements-check
+roles-update:
+	ansible/roles.py --update
+
+roles: roles-install roles-check
 
 $(PROVISIONER_PATH):
 	@mkdir -p $(TF_PLUGINS_DIR)/$(ARCH); \
@@ -41,7 +44,12 @@ secrets:
 	pass services/consul/client-crt > ansible/files/consul-client.crt
 	pass services/consul/client-key > ansible/files/consul-client.key
 
-init-terraform:
+consul-token-check:
+ifndef CONSUL_HTTP_TOKEN
+	$(error No CONSUL_HTTP_TOKEN env variable set!)
+endif
+
+init-terraform: consul-token-check
 	terraform init -upgrade=true
 
 cleanup:
