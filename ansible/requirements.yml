@@ -16,12 +16,12 @@
 
 - name: infra-role-certbot
   src: git@github.com:status-im/infra-role-certbot.git
-  version: 17986a809058ce17ef45300365b268f3ed33a00a
+  version: dfd0bce4e5e2484f9be6f38ca34af92e5461ee8c
 
 - name: infra-role-nim-waku
   src: git@github.com:status-im/infra-role-nim-waku.git
-  version: 0948fc8aa6c5738ca963d7faac2b203645d22afd
+  version: d11ffbb1b4ba974446dc998658ed664586713139
 
 - name: infra-role-systemd-timer
   src: git@github.com:status-im/infra-role-systemd-timer.git
-  version: 9bbb72fe9df7379c5c63cfe9f144efa30ed828d9
+  version: 5934942e206c1b64036f60b0441493917db90b1c
