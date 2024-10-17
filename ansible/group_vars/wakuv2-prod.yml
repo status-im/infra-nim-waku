@@ -71,15 +71,14 @@ conn_limit_dport: '{{ nim_waku_websock_port }}'
 open_ports_default_comment: '{{ nim_waku_cont_name }}'
 open_ports_default_chain: 'SERVICES'
 open_ports_default_protocol: 'tcp'
-open_ports_list_base:
+open_ports_list:
+  nginx:
+  - { port: '80', comment: 'Certbot verification' }
+  nim-waku:
   - { port: '{{ nim_waku_p2p_udp_port }}', protocol: 'udp' }
   - { port: '{{ nim_waku_p2p_tcp_port }}' }
   - { port: '{{ nim_waku_disc_v5_port }}', protocol: 'udp' }
   - { port: '{{ nim_waku_websock_port }}' }
   - { port: '{{ nim_waku_websockify_cont_port }}' }
-  - { port: '80', comment: 'Certbot verification' }
-  - { port: '{{ nim_waku_metrics_port }}', chain: 'VPN', ipset: 'metrics.hq' }
-  - { port: '{{ nim_waku_rpc_tcp_port }}', chain: 'VPN', ipset: '{{ env }}.{{ stage }}' }
-
-# open_ports_list_extra defines ports to open in host_vars
-open_ports_list: '{{ open_ports_list_base + open_ports_list_extra|default([]) }}'
+  - { port: '{{ nim_waku_metrics_port }}', iifname: 'wg0', ipset: 'metrics.hq' }
+  - { port: '{{ nim_waku_rpc_tcp_port }}', iifname: 'wg0', ipset: '{{ env }}.{{ stage }}' }
