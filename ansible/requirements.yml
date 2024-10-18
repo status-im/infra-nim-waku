@@ -20,7 +20,7 @@
 
 - name: infra-role-nim-waku
   src: git@github.com:status-im/infra-role-nim-waku.git
-  version: d11ffbb1b4ba974446dc998658ed664586713139
+  version: 6f81c90be456c279cf8af316ab54b75b2c9fd329
 
 - name: infra-role-systemd-timer
   src: git@github.com:status-im/infra-role-systemd-timer.git
