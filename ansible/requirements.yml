@@ -12,15 +12,15 @@
 
 - name: infra-role-consul-service
   src: git@github.com:status-im/infra-role-consul-service.git
-  version: 2ef75e12a6bd0b57e1db95c834d30be45fe17af4
+  version: a8e5415669245c189a7b665720cace76f2e1d014
 
 - name: infra-role-certbot
   src: git@github.com:status-im/infra-role-certbot.git
-  version: dfd0bce4e5e2484f9be6f38ca34af92e5461ee8c
+  version: 0cac45df2ed5ba45d80111cf198f272798ba006c
 
 - name: infra-role-nim-waku
   src: git@github.com:status-im/infra-role-nim-waku.git
-  version: 6f81c90be456c279cf8af316ab54b75b2c9fd329
+  version: 936dac7fc6f3d4dbf3344bb4106d70ea353038d8
 
 - name: infra-role-systemd-timer
   src: git@github.com:status-im/infra-role-systemd-timer.git
