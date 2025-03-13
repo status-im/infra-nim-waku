@@ -17,23 +17,23 @@
         default = let
           pythonPkgs = pkgs.python312.withPackages (
             _: with (pkgs.python312Packages); [
-              ipython pyyaml jinja2 pyopenssl cryptography hvac
+              ipython pyyaml jinja2 PyGithub
+              pyopenssl cryptography hvac
             ]
           );
         in pkgs.mkShellNoCC {
           packages = with pkgs.buildPackages; [
             # misc
-            git openssh jq fzf silver-searcher direnv
+            git openssh jq silver-searcher direnv
             # networking
             curl nmap nettools dnsutils
             # infra
-            terraform ansible_2_17
+            terraform ansible_2_17 pythonPkgs
             # security
-            pass vault pwgen
+            pass vault yubikey-manager pwgen
             # cloud
-            aliyun-cli awscli doctl
-            hcloud scaleway-cli
-            google-cloud-sdk
+            aliyun-cli awscli doctl google-cloud-sdk
+            hcloud s3cmd scaleway-cli
           ];
 
           shellHook = ''
