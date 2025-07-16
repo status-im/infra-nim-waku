@@ -16,7 +16,7 @@
   run_once: true
   gather_facts: false
   tasks:
-    - local_action: command ./versioncheck.py
+    - local_action: command ./roles.py --check
       changed_when: false
 
 - name: Bootstrap Python support for Ansible
@@ -29,5 +29,13 @@
 - name: Bootstrap admin users and Consul
   hosts: all
   serial: '{{ serial|default(1) }}'
+  pre_tasks:
+    - name: Enable Maintenance Mode
+      command: 'maintenance Ansible run by {{ ansible_env.USER }}'
+      tags: always
+  post_tasks:
+    - name: Disable Maintenance Mode
+      command: 'maintenance disable'
+      tags: always
   roles:
     - infra-role-bootstrap-linux

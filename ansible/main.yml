@@ -11,6 +11,14 @@
 
 - name: Configure Waku Nodes
   hosts: wakuv2-prod
+  pre_tasks:
+    - name: Enable Maintenance Mode
+      command: 'maintenance Ansible run by {{ ansible_env.USER }}'
+      tags: always
+  post_tasks:
+    - name: Disable Maintenance Mode
+      command: 'maintenance disable'
+      tags: always
   roles:
     - { role: infra-role-open-ports, tags: open-ports }
     - { role: conn-limit,            tags: conn-limit }
