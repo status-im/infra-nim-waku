@@ -13,7 +13,7 @@
   hosts: wakuv2-prod
   pre_tasks:
     - name: Enable Maintenance Mode
-      command: 'maintenance Ansible run by {{ ansible_env.USER }}'
+      command: 'maintenance Ansible run by {{ lookup("env", "USER") }}'
       tags: always
   post_tasks:
     - name: Disable Maintenance Mode

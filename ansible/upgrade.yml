@@ -1,16 +1,26 @@
+---
 - name: Update and upgrade apt packages
   gather_facts: false
   hosts: all
   serial: 1
+  pre_tasks:
+    - name: Enable Maintenance Mode
+      command: 'maintenance Ansible run by {{ lookup("env", "USER") }}'
+      tags: always
+  post_tasks:
+    - name: Disable Maintenance Mode
+      command: 'maintenance disable'
+      tags: always
   tasks:
     - name: Upgrade packages
       apt:
         upgrade: true
         update_cache: true
-        cache_valid_time: 86400
-    - name: Remove unused packages
-      apt:
-        autoremove: true
+        cache_valid_time: 86400 # One day
       register: packages
     - reboot:
       when: packages.changed
+    - name: Remove unused packages
+      apt:
+        autoremove: true
+        autoclean: true
