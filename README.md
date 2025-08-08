@@ -1,3 +1,5 @@
+## :warning: This is a legacy repository and no longer used.
+
 # Description
 
 This repo defines __legacy__ infrastructure for running [nim-waku](https://github.com/waku-org/nwaku) nodes.
@@ -14,7 +16,6 @@ DNS `TXT` ENRTree records exist to discover available fleets:
 ```
 enrtree://ANEDLO25QVUGJOUTQFRYKWX6P4Z4GKVESBMHML7DZ6YK4LGS5FC5O@prod.wakuv2.nodes.status.im
 ```
-
 
 # Continuous Integration
 
